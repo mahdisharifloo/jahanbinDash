@@ -1,0 +1,267 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Notifications {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="content">
+    <div>
+      <ul class="pagination">
+        
+        {% for p in pages %}
+          <li>
+            <div>
+              <a href={{ p.url }}>
+                <h5>
+                    {{ p.number }} <span style="display:inline-block; width: 3;"></span>
+                </h5>
+              </a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/news/">مرتب سازی <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              بستر
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=instagram&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">اینستاگرام</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=twitter&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">توییتر</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=telgram_group&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">گروه های تلگرامی</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=telegram_channel&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">کانال های تلگرامی</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=news_agency&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">خبرگزاری ها</a> 
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              بازه زمانی
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=1d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1d</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=3d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">3d</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=7d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">7d</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=14d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">14d</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=1m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1m</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=2m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">2m</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=3m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">3m</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=6m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">6m</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=1y&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1y</a> 
+            </div>
+          </li>
+          
+
+
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              احساسات
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">خیلی خوب</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=positive&">خوب</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=mixed&">خنثی</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=negative&">بد</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=very negative&">خیلی بد</a> 
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              دسته بندی
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=ورزشی&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">ورزشی</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=اقتصادی&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">اقتصادی</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=پزشکی&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">پزشکی</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=اجتماعی&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">اجتماعی</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=سیاسی&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">سیاسی</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=بین الملل&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">بین الملل</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=فرهنگی هنری&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">فرهنگی هنری</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=علمی فناوری&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">عملی فناوری</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              عملیات روانی
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=a1">a1</a>
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=a2">a2</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=a3">a3</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b1">b1</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b2">b2</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b3">b3</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b4">b4</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b5">b5</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b6">b6</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b7">b7</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b8">b8</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b9">b9</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b10">b10</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b11">b11</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b12">b12</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b13">b13</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b14">b14</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b15">b15</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b16">b16</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b17">b17</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b18">b18</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b19">b19</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=b20">b20</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=c1">c1</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=c2">c2</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=c3">c3</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=c4">c4</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=c5">c5</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=c6">c6</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=c7">c7</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=c8">c8</a> 
+              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=c9">c9</a> 
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            {% for news in news_list1 %}
+              <div class="alert alert-success">
+                <div><img class="avatar" src="{{ ASSETS_ROOT }}/img/default-avatar.png" alt="..."></div>
+                <div class="text-right"><span><b>متن خبر  </b><br> {{ news.clean_context }}</span></div>
+                <div class="text-right"><span><b> دسته بندی خبری  </b><br> {{ news.category }} </span></div>
+                <div class="text-right"><span><b>احساسات  </b><br>{{ news.sentiment }}</span></div>
+                <!-- <div class="text-right"><span><b>موجودیت ها  </b><br> {{ news.ner }}</span></div> -->
+                <div class="text-right"><span><b>دسته بندی عملیات روانی  </b><br> {{ news.information_service_tag.description }} </span></div>
+                <div class="text-right"><span><b>تاریخ انتشار  </b><br>{{ news.created_at }}</span></div>
+                <div class="text-right"><span><b>بستر </b><br>{{ news.platform }}</span></div>
+
+
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>  
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            {% for news in news_list2 %}
+            <div class="alert alert-success">
+              <div><img class="avatar" src="{{ ASSETS_ROOT }}/img/default-avatar.png" alt="..."></div>
+              <div class="text-right"><span><b>متن خبر  </b><br> {{ news.clean_context }}</span></div>
+              <div class="text-right"><span><b> دسته بندی خبری  </b><br> {{ news.category }} </span></div>
+              <div class="text-right"><span><b>احساسات  </b><br>{{ news.sentiment }}</span></div>
+              <!-- <div class="text-right"><span><b>موجودیت ها  </b><br> {{ news.ner }}</span></div> -->
+              <div class="text-right"><span><b>دسته بندی عملیات روانی  </b><br> {{ news.information_service_tag.description }} </span></div>
+              <div class="text-right"><span><b>تاریخ انتشار  </b><br>{{ news.created_at }}</span></div>
+              <div class="text-right"><span><b>بستر </b><br>{{ news.platform }}</span></div>
+
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="pagination">
+      
+      {% for p in pages %}
+        <li>
+          <div>
+            <a href={{ p.url }}>
+              <h5>
+                  {{ p.number }} <span style="display:inline-block; width: 3;"></span>
+              </h5>
+            </a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

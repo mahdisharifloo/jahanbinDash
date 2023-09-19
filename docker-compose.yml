@@ -1,0 +1,207 @@
+version: '3.8'
+services:
+  appseed-app:
+    container_name: appseed_app
+    restart: always
+    env_file: .env
+    # image: black_dash_appseed-app:latest
+    build: .
+    expose:
+      - '5058'
+      - '5005'
+    depends_on: 
+      - db
+    networks:
+      - db_network
+      
+  nginx:
+    container_name: nginx
+    restart: always
+    image: "nginx:latest"
+    ports:
+      - "5085:5085"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on: 
+      - appseed-app
+    networks:
+      - db_network
+
+  db:
+    container_name: db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      - db_network
+
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 60606:27017
+    expose:
+      - 60606
+    volumes:
+      - ../mongo-db-volume:/data/db
+    command: [--auth]
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=jahanbin
+      - MONGO_INITDB_ROOT_PASSWORD=jahanbinMongoP@ssw0rd
+      - MONGO_INITDB_DATABASE=data_pipline
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongodb:27017/data_pipline --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+    networks:
+      - db_network
+
+  # twitter:
+  #   # image: dashboard_api:latest 
+  #   build: ../twitter/
+  #   ports:
+  #     - 10010:10010
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+  # instagram:
+  #   # image: dashboard_api:latest 
+  #   build: ../instagram/
+  #   ports:
+  #     - 10011:10011
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+
+  # telegram-group:
+  #   # image: dashboard_api:latest 
+  #   build: ../telegram_groups/
+  #   ports:
+  #     - 10012:10012
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+
+  # telegram-channel:
+  #   # image: dashboard_api:latest 
+  #   build: ../telegram_channels/
+  #   ports:
+  #     - 10013:10013
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+
+  # news-agency:
+  #   # image: dashboard_api:latest 
+  #   build: ../news_agency/
+  #   ports:
+  #     - 10014:10014
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+
+  # lifeweb_gateway:
+  #   #image: dashboard_api:latest 
+  #   build: ../lifeweb_gateways/
+  #   ports:
+  #     - 10020:10020
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+
+  # ner:
+  #   image: black_jahanbin-nlp:latest
+  #   # build: ../ner/
+  #   ports:
+  #     - 10030:10020
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+  # sentiment:
+  #   image: black_jahanbin-sentiment:latest
+  #   #build: ../sentiment_analysis/
+  #   ports:
+  #     - "10031:10021"
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+
+  # information_service:
+  #   image: black_jahanbin-information_service_tagger:latest
+  #   #build: ../information_service/
+  #   ports:
+  #     - 10032:10025
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+  # category:
+  #   image: category.ai:latest
+  #   # build: ../category/
+  #   ports:
+  #     - 10034:10034
+  #   restart: always
+  #   networks:
+  #     - db_network
+
+  # ner_tagger:
+  #   build: ../ner_tagger/
+  #   restart: always
+  #   networks:
+  #     - db_network
+  #   depends_on: 
+  #     - ner
+
+  # sentiment_tagger:
+  #   build: ../sentiment_tagger/
+  #   restart: always
+  #   networks:
+  #     - db_network
+  #   depends_on: 
+  #     - sentiment
+
+  # information_service_tagger:
+  #   build: ../information_service_tagger/
+  #   restart: always
+  #   networks:
+  #     - db_network
+  #   depends_on: 
+  #     - information_service
+
+  # category_tagger:
+  #   build: ../category_tagger/
+  #   restart: always
+  #   networks:
+  #     - db_network
+  #   depends_on: 
+  #     - category
+
+
+# Names our volume
+volumes:
+  my-db:
+  nginx:
+  mongo-db-volume:
+
+networks:
+  db_network:
+    driver: bridge

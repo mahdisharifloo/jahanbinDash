@@ -1,0 +1,445 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block extrastyle %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css" rel="stylesheet" />
+
+{% endblock extrastyle %}
+{% block bodyclass %}rtl menu-on-right{% endblock bodyclass %}
+{% block sidebar %}
+{% include 'includes/rtlsidebar.html' %}
+{% endblock sidebar %}
+{% block navigation %}
+{% include 'includes/navigationrtl.html' %}
+{% endblock navigation %}
+{% block content %}
+<script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+<div class="content">
+  <script src="{% static 'assets/demo/demo.js' %}"></script>
+  <script>
+    var label_chart11 = "{{ label_chart11 }}";
+    var data_chart11 = "{{ data_chart11 }}";
+    var label_chart12 = "{{ label_chart12 }}";
+    var data_chart12 = "{{ data_chart12 }}";
+    var label_chart13 = "{{ label_chart13 }}";
+    var data_chart13 = "{{ data_chart13 }}";
+    var label_chart2 = "{{ label_chart2 }}";
+    var data_chart2 = "{{ data_chart2 }}";
+    var label_chart3 = "{{ label_chart3 }}";
+    var data_chart3 = "{{ data_chart3 }}";
+    var label_chart4 = "{{ label_chart4 }}";
+    var data_chart4 = "{{ data_chart4 }}";
+  </script>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-chart">
+        <div class="card-header ">
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <h4 class="card-category"></h4>
+            </div>
+            <div class="col-sm-6">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                  <input type="radio" name="options" checked>
+                  <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"> دریافت شده</span>
+                  <span class="d-block d-sm-none">
+                    <i class="tim-icons icon-single-02"></i>
+                  </span>
+                </label>
+                <label class="btn btn-sm btn-primary btn-simple" id="1">
+                  <input type="radio" class="d-none d-sm-none" name="options">
+                  <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"> تحلیل شده</span>
+                  <span class="d-block d-sm-none">
+                    <i class="tim-icons icon-gift-2"></i>
+                  </span>
+                </label>
+                <label class="btn btn-sm btn-primary btn-simple" id="2">
+                  <input type="radio" class="d-none" name="options">
+                  <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">معلق</span>
+                  <span class="d-block d-sm-none">
+                    <i class="tim-icons icon-tap-02"></i>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="chartBig1"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-chart">
+        <div class="card-header ">
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <h4 class="card-category">توده های خبری</h4>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="scatter" style="width:100%;height: 600px;"></div>
+          <script>
+              var trace1 = {
+                x: [44524, 43117,45215,42154,41589,47125,
+                    49524, 48117,49215,48154,49589,48125,
+                    48524, 49117,48215,49154,48589,49125],
+                y: [53, 31,40,15,42,58,
+                    56, 39,46,19,46,59,
+                    59, 36,49,16,49,56],
+                mode: 'markers',
+                name: 'نوآوری',
+                text: ['نوآوری','نوآوری','نوآوری','نوآوری','نوآوری','نوآوری',
+                'نوآوری','نوآوری','نوآوری','نوآوری','نوآوری','نوآوری',
+                'نوآوری','نوآوری','نوآوری','نوآوری','نوآوری','نوآوری'],
+                marker: {
+                  color: 'rgb(164, 194, 244)',
+                  size: 12,
+                  line: {
+                    color: 'white',
+                    width: 0.5
+                  }
+                },
+                type: 'scatter'
+              };
+
+              var trace2 = {
+                x: [29156, 27845, 31245, 30066, 29570, 27159, 23557, 21046, 18007],
+                y: [33, 20, 17, 19, 27, 19, 49, 30, 31],
+                mode: 'markers',
+                name: 'مالی',
+                text: ['مالی','مالی','مالی','مالی','مالی','مالی','مالی','مالی',],
+                marker: {
+                  color: 'rgb(255, 217, 102)',
+                  size: 12
+                },
+                type: 'scatter'
+              };
+
+              var trace3 = {
+                x: [6420, 8452, 6500, 4920, 8500, 5253, 4692, 3899],
+                y: [23, 42, 54, 89, 51, 30, 45, 70],
+                mode: 'markers',
+                name: 'متفرقه',
+                text: ['متفرقه','متفرقه','متفرقه','متفرقه','متفرقه','متفرقه','متفرقه','متفرقه',],
+                marker: {
+                  color: 'rgb(234, 153, 153)',
+                  size: 12
+                },
+                type: 'scatter'
+              };
+
+              var trace4 = {
+                x: [10000, 14000, 15595, 13546, 12026, 7434, 9000,
+                10099, 14099, 15499, 13599, 12099, 7499, 9099],
+                y: [43, 47, 56, 32, 45, 51, 60,
+                33, 32, 56, 39, 49, 59, 69
+                ],
+                mode: 'markers',
+                name: 'سیاسی',
+                text: ['سیاسی','سیاسی','سیاسی','سیاسی','سیاسی','سیاسی','سیاسی',
+                        'سیاسی','سیاسی','سیاسی','سیاسی','سیاسی','سیاسی','سیاسی',],
+                marker: {
+                  color: 'rgb(142, 124, 195)',
+                  size: 12
+                },
+                type: 'scatter'
+              };
+
+              var data = [trace1, trace2, trace3, trace4];
+
+              var layout = {
+                title: 'نماینده دسته های هر توده خبری',
+                xaxis: {
+                  title: 'بردار ویژگی کاهش ابعاد داده شده',
+                  showgrid: false,
+                  zeroline: false
+                },
+                yaxis: {
+                  title: 'درصد تشابه ماتریسی',
+                  showline: false
+                }
+              };
+
+              Plotly.newPlot('scatter', data, layout);
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-4 text-right">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h4 class="card-category">منابع خبری تحت پوشش اطلاعاتی</h4>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="chartLinePurple"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 text-right">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h4 class="card-category">حجم خبری در مورد نیرو های مسلح </h4>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="CountryChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 text-right">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h4 class="card-category">حجم خبری غیره مرتبط با اهداف سامانه</h4>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="chartLineGreen"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-sm-6 text-center">
+      <div class="card  card-tasks text-right">
+        <div class="card-header text-right">
+          <h6 class="title d-inline">برتین های</h6>
+          <p class="card-category d-inline">امروز</p>
+          <div class="dropdown float-left">
+            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">براساس زمان</a>
+              <a class="dropdown-item" href="#">براساس تعداد کامنت</a>
+              <a class="dropdown-item" href="#">براساس تعداد لایک</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="table-full-width table-responsive">
+            <table class="table">
+              <tbody>
+                {% for news in rank_news_list1 %}
+                  <tr>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="text-right">
+                      <p class="title">{{ news.clean_context }}</p>
+                      <p class="text-muted">{{ news.screen_name }}</p>
+                    </td>
+                    <td class="td-actions">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                        <i class="tim-icons icon-settings"></i>
+                      </button>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-6 text-center">
+      <div class="card  card-tasks text-right">
+        <div class="card-header text-right">
+          <h6 class="title d-inline">برتین های</h6>
+          <p class="card-category d-inline">هفته</p>
+          <div class="dropdown float-left">
+            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">براساس زمان</a>
+              <a class="dropdown-item" href="#">براساس تعداد کامنت</a>
+              <a class="dropdown-item" href="#">براساس تعداد لایک</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="table-full-width table-responsive">
+            <table class="table">
+              <tbody>
+                {% for news in rank_news_list2 %}
+                  <tr>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="text-right">
+                      <p class="title">{{ news.clean_context }}</p>
+                      <p class="text-muted">{{ news.screen_name }}</p>
+                    </td>
+                    <td class="td-actions">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                        <i class="tim-icons icon-settings"></i>
+                      </button>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <div class="card-header text-right">
+        <h4 class="card-category"> ابر موجودیت یک ماهه  </h4>
+        <div>
+          <img src="{{ ASSETS_ROOT }}/img/30d_twitter.jpg" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center">
+      <div class="card-header text-right">
+        <h4 class="card-category">  ابر موجودیت سه ماهه </h4>
+        <div>
+          <img src="{{ ASSETS_ROOT }}/img/30d_twitter.jpg" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="card card-chart">
+        <div class="card-header ">
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <h4 class="card-category">عملیات روانی</h4>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="myDiv" style="width:100%;height: 600px;"></div>
+          <script>
+              var data = [{
+              type: "sunburst",
+              labels:  ["A","B","C","a1","a2","a3","b1","b2","b3","b4","b5","b6","b7","b8","b9","b10","b11","b12","b13","b14","b15","b16","b17","b18","b19","b20","c1","c2","c3","c4","c5","c6","c7","c8","c9",
+                      ],
+              parents: [
+                        "","","",
+                        "A","A","A",
+                        "B","B","B","B","B","B","B","B","B","B",
+                        "B","B","B","B","B","B","B","B","B","B",
+                        "C","C","C","C","C","C","C","C","C",
+                      ],
+              values:  [
+              139,1150,49,54,7,78,45,456,45,7,3,53,7,42,42,14,3,35,88,99,77,7,28,87,4,8,5,6,8,3,5,3,5,2,12
+              ],
+              outsidetextfont: {size: 20, color: "#377eb8"},
+              leaf: {opacity: 0.4},
+              marker: {line: {width: 2}},
+            }];
+
+            var layout = {
+              margin: {l: 0, r: 0, b: 0, t: 0},
+              width: 500,
+              height: 500
+            };
+
+
+            Plotly.newPlot('myDiv', data, layout);
+
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-6 text-center">
+      <div class="card  card-tasks text-right">
+        <div class="card-header text-right">
+          <h6 class="title d-inline">راهنمای نمودار</h6>
+          <p class="card-category d-inline">عملیات روانی</p>
+          <div class="dropdown float-left">
+            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">یک هفته اخیر</a>
+              <a class="dropdown-item" href="#">یک ماه اخیر</a>
+              <a class="dropdown-item" href="#">سه ماه اخیر</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="table-full-width table-responsive">
+            <table class="table">
+              <tbody>
+                {% for item in sunburst %}
+                  <tr>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="text-right">
+                      <p class="title">{{ item.label }}</p>
+                      <p class="text-muted">{{ item.category }}</p>
+                    </td>
+                    <td class="td-actions">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                        <i>{{ item.tag }}</i>
+                      </button>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+{% endblock javascripts %}

@@ -1,0 +1,69 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block extrastyle %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css" rel="stylesheet" />
+
+{% endblock extrastyle %}
+{% block bodyclass %}rtl menu-on-right{% endblock bodyclass %}
+{% block sidebar %}
+{% include 'includes/rtlsidebar.html' %}
+{% endblock sidebar %}
+{% block navigation %}
+{% include 'includes/navigationrtl.html' %}
+{% endblock navigation %}
+{% block content %}
+<script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+<div class="content">
+    <script src="{% static 'assets/demo/demo.js' %}"></script>
+    <script>
+        var record = "{{ record }}";
+        var record_id = "{{ record_id }}";
+        var platform = "{{ platform }}";
+    </script>
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 text-center">
+            <div class="card  card-tasks text-right">
+                <div class="card-header text-right">
+                    <h6 class="title d-inline">{{ platform }}</h6>
+                    <h6 class="title d-inline">{{ record.category }}</h6>
+                </div>
+                <div class="card-body ">
+                    <p class="title">{{ record.clean_context }}</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <ul>
+                <li class="header-title"> برچسب عملیات روانی را مشخص کنید </li>
+                <li class="button-container">
+                    <a href="{{ currentUrl }}?info_service_label=mali_tajhizat&platform={{ platform }}&record_id={{ record_id }}"
+                        class="btn btn-primary btn-block btn-round">مسائل مالی و تجهیزات</a>
+                    <a href="{{ currentUrl }}?info_service_label=nezami_aghidati&platform={{ platform }}&record_id={{ record_id }}"
+                        class="btn btn-primary btn-block btn-round">مسائل عقیدتی و نظامی</a>
+                    <a href="{{ currentUrl }}?info_service_label=tahrik_eteraz&platform={{ platform }}&record_id={{ record_id }}"
+                        class="btn btn-primary btn-block btn-round">تحریک و اعتراض کارکنان</a>
+                    <a href="{{ currentUrl }}?info_service_label=etemad_zodaei_modiriati&platform={{ platform }}&record_id={{ record_id }}"
+                        class="btn btn-primary btn-block btn-round">مسائل مدیریتی و اعتمادزدایی</a>
+                    <a href="{{ currentUrl }}?info_service_label=tazad_ekhtelaf&platform={{ platform }}&record_id={{ record_id }}"
+                        class="btn btn-primary btn-block btn-round">تضادها و اختلاف‌ها</a>
+                    <a href="{{ currentUrl }}?info_service_label=unknown&platform={{ platform }}&record_id={{ record_id }}"
+                        class="btn btn-primary btn-block btn-round"> نامربوط </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+{% endblock javascripts %}

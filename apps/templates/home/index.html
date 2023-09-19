@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block extrastyle %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css" rel="stylesheet" />
+
+{% endblock extrastyle %}
+{% block bodyclass %}rtl menu-on-right{% endblock bodyclass %}
+{% block sidebar %}
+{% include 'includes/rtlsidebar.html' %}
+{% endblock sidebar %}
+{% block navigation %}
+{% include 'includes/navigationrtl.html' %}
+{% endblock navigation %}
+{% block content %}
+<!-- <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script> -->
+<div class="content">
+  <!-- <script src="{% static 'assets/demo/demo.js' %}"></script> -->
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card-header ">
+        <p><b>Welcom To JAHANBIN2</b></p>
+        <div class="card-footer">
+          <a href="/instagram">
+              <i class=""></i>
+              <p><b>INSTAGRAM</b></p>
+          </a>
+          <a href="/twitter">
+              <i class=""></i>
+              <p><b>TWITTER</b></p>
+          </a>
+          <a href="/agency_news">
+              <i class=""></i>
+              <p><b>NEWS AGENCY</b></p>
+          </a>
+          <a href="/telegram_group">
+              <i class=""></i>
+              <p><b>TELEGRAM GROUPS</b></p>
+          </a>
+          <a href="/telegram_chanel">
+              <i class=""></i>
+              <p><b>TELEGRAME CHANELS</b></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+{% endblock javascripts %}

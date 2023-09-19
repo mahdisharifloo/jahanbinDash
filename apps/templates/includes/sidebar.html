@@ -1,0 +1,71 @@
+
+    <div class="sidebar" data="blue">
+        <!--
+          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+      -->
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/" class="simple-text logo-mini">
+                    CT
+                </a>
+                <a href="/" class="simple-text logo-normal">
+                    JAHANBIN2
+                </a>
+            </div>
+            <ul class="nav">
+                <li class="{% if 'index' in segment %} active {% endif %} ">
+                    <a href="/instagram">
+                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <p><b>INSTAGRAM</b></p>
+                    </a>
+                </li>
+                <li class="{% if 'index' in segment %} active {% endif %} ">
+                    <a href="/twitter">
+                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <p><b>TWITTER</b></p>
+                    </a>
+                </li>
+                
+                <li class="{% if 'index' in segment %} active {% endif %} ">
+                    <a href="/agency_news">
+                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <p><b>NEWS AGENCY</b></p>
+                    </a>
+                </li>
+            
+                <li class="{% if 'index' in segment %} active {% endif %} ">
+                    <a href="/telegram_group">
+                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <p><b>TELEGRAM GROUPS</b></p>
+                    </a>
+                </li>
+                <li class="{% if 'index' in segment %} active {% endif %} ">
+                    <a href="/telegram_chanel">
+                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <p><b>TELEGRAME CHANELS</b></p>
+                    </a>
+                </li>
+
+                <li class="{% if 'notifications' in segment %} active {% endif %}">
+                    <a href="/news">
+                        <i class="tim-icons icon-align-center"></i>
+                        <p><b>NEWS CARDS</b></p>
+                    </a>
+                </li>
+
+                <li class="{% if 'notifications' in segment %} active {% endif %}">
+                    <a href="/labeling">
+                        <i class="tim-icons icon-align-center"></i>
+                        <p><b>LABELING</b></p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'login' %}">
+                        <i class="tim-icons icon-button-power"></i>
+                        <p><b>EXIT</b></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
