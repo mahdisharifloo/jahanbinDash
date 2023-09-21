@@ -122,7 +122,9 @@ def get_data_access_token():
 
 def get_for_labeling(platform):
     # token = get_data_access_token()
-    url = f"http://94.182.215.123:10001/{platform}?time_filtering=6m&count=1"
+    category_list = ["اقتصادی","سیاسی","اجتماعی"]
+    category = random.choice(category_list)
+    url = f"http://94.182.215.123:10001/{platform}?category={category}&time_filtering=6m&count=1"
     payload = {}
     headers = {
     'accept': 'application/json',
