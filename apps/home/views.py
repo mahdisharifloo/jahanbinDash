@@ -118,7 +118,7 @@ def get_data_access_token():
     response = requests.request("POST", url, headers=headers, data=payload)
     return f"Bearer {json.loads(response.text)['access_token']}"
 
-token = get_data_access_token()
+# token = get_data_access_token()
 
 def get_for_labeling(platform):
     # token = get_data_access_token()
@@ -126,7 +126,7 @@ def get_for_labeling(platform):
     payload = {}
     headers = {
     'accept': 'application/json',
-    'Authorization': token
+    # 'Authorization': token
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     if response.status_code == 200:
@@ -139,7 +139,7 @@ def update_info_service_label(platform,record_id,label):
     payload = {}
     headers = {
     'accept': 'application/json',
-    'Authorization': token
+    # 'Authorization': token
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     if response.status_code == 200:
