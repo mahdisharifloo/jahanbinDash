@@ -9,6 +9,8 @@ import random
 import json 
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from jdatetime import datetime as jdatetime
+from datetime import datetime
 
 
 
@@ -586,10 +588,28 @@ def labeling(request):
     platform_list = ["instagram","twitter","telegram_group","telegram_channel","news_agency"]
     platform = random.choice(platform_list)
     record = get_for_labeling(platform=platform)
+    format_string = "%Y-%m-%dT%H:%M:%S.%f"
+    # Define Farsi day and month names
+    farsi_day_names = ["شنبه", "یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"]
+    farsi_month_names = [
+        "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
+        "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"
+    ]
+    created_at = datetime.strptime(record['created_at'], format_string)
+    jalali_datetime = jdatetime.fromgregorian(datetime=created_at)
+    # Format the Jalali datetime in Farsi
+    formatted_jalali_datetime = farsi_day_names[jalali_datetime.weekday()] + "، " + \
+                                str(jalali_datetime.day) + " " + \
+                                farsi_month_names[jalali_datetime.month - 1] + " " + \
+                                str(jalali_datetime.year) + " - " + \
+                                jalali_datetime.strftime("%H:%M")
+    # context['jcreated_at'] = jalali_datetime.strftime("%A, %d %B %Y - %H:%M")
     context = {}
+    context['jcreated_at'] = formatted_jalali_datetime
     context['platform'] = platform
     context['record'] = record
     context['record_id'] = record['_id']
+
     html_template = loader.get_template('home/labeling.html')
     return HttpResponse(html_template.render(context, request))
 

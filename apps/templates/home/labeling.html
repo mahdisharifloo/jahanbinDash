@@ -26,6 +26,7 @@
                 <div class="card-header text-right">
                     <h6 class="title d-inline">{{ platform }}</h6>
                     <h6 class="title d-inline">{{ record.category }}</h6>
+                    <h6 class="title d-inline">{{ jcreated_at }}</h6>
                 </div>
                 <div class="card-body ">
                     <p class="title">{{ record.clean_context }}</p>
@@ -46,8 +47,11 @@
                         class="btn btn-primary btn-block btn-round">مسائل مدیریتی و اعتمادزدایی</a>
                     <a href="{{ currentUrl }}?info_service_label=tazad_ekhtelaf&platform={{ platform }}&record_id={{ record_id }}"
                         class="btn btn-primary btn-block btn-round">تضادها و اختلاف‌ها</a>
+                    <a href="{{ currentUrl }}?info_service_label=khodi&platform={{ platform }}&record_id={{ record_id }}"
+                        class="btn btn-primary btn-block btn-round"> اقدام خودی </a>
                     <a href="{{ currentUrl }}?info_service_label=unknown&platform={{ platform }}&record_id={{ record_id }}"
                         class="btn btn-primary btn-block btn-round"> نامربوط </a>
+
                 </li>
             </ul>
         </div>
