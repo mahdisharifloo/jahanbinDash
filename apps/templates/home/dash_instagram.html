@@ -75,106 +75,6 @@
   </div>
 
 
-  <div class="row">
-    <div class="col-12">
-      <div class="card card-chart">
-        <div class="card-header ">
-          <div class="row">
-            <div class="col-sm-6 text-right">
-              <h4 class="card-category">توده های خبری</h4>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div id="scatter" style="width:100%;height: 600px;"></div>
-          <script>
-              var trace1 = {
-                x: [44524, 43117,45215,42154,41589,47125,
-                    49524, 48117,49215,48154,49589,48125,
-                    48524, 49117,48215,49154,48589,49125],
-                y: [53, 31,40,15,42,58,
-                    56, 39,46,19,46,59,
-                    59, 36,49,16,49,56],
-                mode: 'markers',
-                name: 'نوآوری',
-                text: ['نوآوری','نوآوری','نوآوری','نوآوری','نوآوری','نوآوری',
-                'نوآوری','نوآوری','نوآوری','نوآوری','نوآوری','نوآوری',
-                'نوآوری','نوآوری','نوآوری','نوآوری','نوآوری','نوآوری'],
-                marker: {
-                  color: 'rgb(164, 194, 244)',
-                  size: 12,
-                  line: {
-                    color: 'white',
-                    width: 0.5
-                  }
-                },
-                type: 'scatter'
-              };
-
-              var trace2 = {
-                x: [29156, 27845, 31245, 30066, 29570, 27159, 23557, 21046, 18007],
-                y: [33, 20, 17, 19, 27, 19, 49, 30, 31],
-                mode: 'markers',
-                name: 'مالی',
-                text: ['مالی','مالی','مالی','مالی','مالی','مالی','مالی','مالی',],
-                marker: {
-                  color: 'rgb(255, 217, 102)',
-                  size: 12
-                },
-                type: 'scatter'
-              };
-
-              var trace3 = {
-                x: [6420, 8452, 6500, 4920, 8500, 5253, 4692, 3899],
-                y: [23, 42, 54, 89, 51, 30, 45, 70],
-                mode: 'markers',
-                name: 'متفرقه',
-                text: ['متفرقه','متفرقه','متفرقه','متفرقه','متفرقه','متفرقه','متفرقه','متفرقه',],
-                marker: {
-                  color: 'rgb(234, 153, 153)',
-                  size: 12
-                },
-                type: 'scatter'
-              };
-
-              var trace4 = {
-                x: [10000, 14000, 15595, 13546, 12026, 7434, 9000,
-                10099, 14099, 15499, 13599, 12099, 7499, 9099],
-                y: [43, 47, 56, 32, 45, 51, 60,
-                33, 32, 56, 39, 49, 59, 69
-                ],
-                mode: 'markers',
-                name: 'سیاسی',
-                text: ['سیاسی','سیاسی','سیاسی','سیاسی','سیاسی','سیاسی','سیاسی',
-                        'سیاسی','سیاسی','سیاسی','سیاسی','سیاسی','سیاسی','سیاسی',],
-                marker: {
-                  color: 'rgb(142, 124, 195)',
-                  size: 12
-                },
-                type: 'scatter'
-              };
-
-              var data = [trace1, trace2, trace3, trace4];
-
-              var layout = {
-                title: 'نماینده دسته های هر توده خبری',
-                xaxis: {
-                  title: 'بردار ویژگی کاهش ابعاد داده شده',
-                  showgrid: false,
-                  zeroline: false
-                },
-                yaxis: {
-                  title: 'درصد تشابه ماتریسی',
-                  showline: false
-                }
-              };
-
-              Plotly.newPlot('scatter', data, layout);
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
   <div class="row">
@@ -310,6 +210,25 @@
               </tbody>
             </table>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <div class="card-header text-right">
+        <h4 class="card-category"> ابر موجودیت روزانه  </h4>
+        <div>
+          <img src="{{ ASSETS_ROOT }}/img/30d_instagram.jpg" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center">
+      <div class="card-header text-right">
+        <h4 class="card-category">  ابر موجودیت هفتگی </h4>
+        <div>
+          <img src="{{ ASSETS_ROOT }}/img/90d_instagram.jpg" alt="...">
         </div>
       </div>
     </div>
