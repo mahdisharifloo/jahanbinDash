@@ -67,53 +67,53 @@ services:
     networks:
       - db_network
 
-  # twitter:
-  #   # image: dashboard_api:latest 
-  #   build: ../twitter/
-  #   ports:
-  #     - 10010:10010
-  #   restart: always
-  #   networks:
-  #     - db_network
+  twitter:
+    # image: dashboard_api:latest 
+    build: ../twitter/
+    ports:
+      - 10010:10010
+    restart: always
+    networks:
+      - db_network
 
-  # instagram:
-  #   # image: dashboard_api:latest 
-  #   build: ../instagram/
-  #   ports:
-  #     - 10011:10011
-  #   restart: always
-  #   networks:
-  #     - db_network
-
-
-  # telegram-group:
-  #   # image: dashboard_api:latest 
-  #   build: ../telegram_groups/
-  #   ports:
-  #     - 10012:10012
-  #   restart: always
-  #   networks:
-  #     - db_network
+  instagram:
+    # image: dashboard_api:latest 
+    build: ../instagram/
+    ports:
+      - 10011:10011
+    restart: always
+    networks:
+      - db_network
 
 
-  # telegram-channel:
-  #   # image: dashboard_api:latest 
-  #   build: ../telegram_channels/
-  #   ports:
-  #     - 10013:10013
-  #   restart: always
-  #   networks:
-  #     - db_network
+  telegram-group:
+    # image: dashboard_api:latest 
+    build: ../telegram_groups/
+    ports:
+      - 10012:10012
+    restart: always
+    networks:
+      - db_network
 
 
-  # news-agency:
-  #   # image: dashboard_api:latest 
-  #   build: ../news_agency/
-  #   ports:
-  #     - 10014:10014
-  #   restart: always
-  #   networks:
-  #     - db_network
+  telegram-channel:
+    # image: dashboard_api:latest 
+    build: ../telegram_channels/
+    ports:
+      - 10013:10013
+    restart: always
+    networks:
+      - db_network
+
+
+  news-agency:
+    # image: dashboard_api:latest 
+    build: ../news_agency/
+    ports:
+      - 10014:10014
+    restart: always
+    networks:
+      - db_network
 
 
   # lifeweb_gateway:

@@ -269,18 +269,25 @@
           <script>
             var data = [{
               type: "sunburst",
-              labels: ["A", "B", "C", "a1", "a2", "a3", "b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10", "b11", "b12", "b13", "b14", "b15", "b16", "b17", "b18", "b19", "b20", "c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9",
+              labels: [
+                "مسائل مالی و تجهیزات",
+                "مسائل عقیدتی و نظامی",
+                "تحریک و اعتراض کارکنان",
+                "مسائل مدیریتی و اعتمادزدایی",
+                "تضادها و اختلاف‌ها",
+                "اقدام خودی",
+                "نامربوط"
               ],
               parents: [
-                "", "", "",
-                "A", "A", "A",
-                "B", "B", "B", "B", "B", "B", "B", "B", "B", "B",
-                "B", "B", "B", "B", "B", "B", "B", "B", "B", "B",
-                "C", "C", "C", "C", "C", "C", "C", "C", "C",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
               ],
-              values: [
-                139, 1150, 49, 54, 7, 78, 45, 456, 45, 7, 3, 53, 7, 42, 42, 14, 3, 35, 88, 99, 77, 7, 28, 87, 4, 8, 5, 6, 8, 3, 5, 3, 5, 2, 12
-              ],
+              values: [139, 100, 49, 54, 7, 78, 45],
               outsidetextfont: { size: 20, color: "#377eb8" },
               leaf: { opacity: 0.4 },
               marker: { line: { width: 2 } },
@@ -292,9 +299,7 @@
               height: 500
             };
 
-
             Plotly.newPlot('myDiv', data, layout);
-
           </script>
         </div>
       </div>
@@ -318,7 +323,7 @@
           <div class="table-full-width table-responsive">
             <table class="table">
               <tbody>
-                {% for item in sunburst %}
+
                 <tr>
                   <td class="text-center">
                     <div class="form-check">
@@ -331,16 +336,148 @@
                     </div>
                   </td>
                   <td class="text-right">
-                    <p class="title">{{ item.label }}</p>
-                    <p class="text-muted">{{ item.category }}</p>
+                    <p class="title">مسائل مالی و تجهیزات</p>
+                    <p class="text-muted"> X </p>
                   </td>
                   <td class="td-actions">
                     <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i>{{ item.tag }}</i>
+                      <i> x </i>
                     </button>
                   </td>
                 </tr>
-                {% endfor %}
+
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">مسائل عقیدتی و نظامی</p>
+                    <p class="text-muted"> X </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i> x </i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">تحریک و اعتراض کارکنان</p>
+                    <p class="text-muted"> X </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i> x </i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">مسائل مدیریتی و اعتمادزدایی</p>
+                    <p class="text-muted"> X </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i> x </i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">تضاد ها و اختلاف ها</p>
+                    <p class="text-muted"> X </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i> x </i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">اقدام خودی</p>
+                    <p class="text-muted"> X </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i> x </i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">نامربوط</p>
+                    <p class="text-muted"> X </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i> x </i>
+                    </button>
+                  </td>
+                </tr>
+
               </tbody>
             </table>
           </div>
