@@ -28,6 +28,8 @@
     var data_chart3 = "{{ data_chart3 }}";
     var label_chart4 = "{{ label_chart4 }}";
     var data_chart4 = "{{ data_chart4 }}";
+    var ui_sunburst_data = "{{ sunburst_data }}".split(',').map(Number) 
+
   </script>
 
   <div class="row">
@@ -220,7 +222,7 @@
       <div class="card-header text-right">
         <h4 class="card-category"> ابر موجودیت روزانه </h4>
         <div>
-          <img src="{{ ASSETS_ROOT }}/img/30d_instagram.jpg" alt="...">
+          <img src="{{ ASSETS_ROOT }}/img/1d_news_agency.jpg" alt="...">
         </div>
       </div>
     </div>
@@ -228,7 +230,7 @@
       <div class="card-header text-right">
         <h4 class="card-category"> ابر موجودیت هفتگی </h4>
         <div>
-          <img src="{{ ASSETS_ROOT }}/img/90d_instagram.jpg" alt="...">
+          <img src="{{ ASSETS_ROOT }}/img/7d_news_agency.jpg" alt="...">
         </div>
       </div>
     </div>
@@ -248,7 +250,7 @@
       <div class="card-header text-right">
         <h4 class="card-category"> ابر موجودیت سه ماهه </h4>
         <div>
-          <img src="{{ ASSETS_ROOT }}/img/30d_news_agency.jpg" alt="...">
+          <img src="{{ ASSETS_ROOT }}/img/90d_news_agency.jpg" alt="...">
         </div>
       </div>
     </div>
@@ -287,7 +289,7 @@
                 "",
                 ""
               ],
-              values: [139, 100, 49, 54, 7, 78, 45],
+              values: ui_sunburst_data ,
               outsidetextfont: { size: 20, color: "#377eb8" },
               leaf: { opacity: 0.4 },
               marker: { line: { width: 2 } },
@@ -307,8 +309,7 @@
     <div class="col-lg-6 col-sm-6 text-center">
       <div class="card  card-tasks text-right">
         <div class="card-header text-right">
-          <h6 class="title d-inline">راهنمای نمودار</h6>
-          <p class="card-category d-inline">عملیات روانی</p>
+          <h6 class="title d-inline">محدود سازی تاریخ</h6>
           <div class="dropdown float-left">
             <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
@@ -320,166 +321,11 @@
           </div>
         </div>
         <div class="card-body ">
-          <div class="table-full-width table-responsive">
-            <table class="table">
-              <tbody>
-
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">مسائل مالی و تجهیزات</p>
-                    <p class="text-muted"> X </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i> x </i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">مسائل عقیدتی و نظامی</p>
-                    <p class="text-muted"> X </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i> x </i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">تحریک و اعتراض کارکنان</p>
-                    <p class="text-muted"> X </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i> x </i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">مسائل مدیریتی و اعتمادزدایی</p>
-                    <p class="text-muted"> X </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i> x </i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">تضاد ها و اختلاف ها</p>
-                    <p class="text-muted"> X </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i> x </i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">اقدام خودی</p>
-                    <p class="text-muted"> X </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i> x </i>
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">نامربوط</p>
-                    <p class="text-muted"> X </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i> x </i>
-                    </button>
-                  </td>
-                </tr>
-
-              </tbody>
-            </table>
+          <div class="card-body">
+            <input type="text" id="test-date-id">
+            <script>
+              kamaDatepicker('test-date-id', { buttonsColor: "red", forceFarsiDigits: true });
+            </script>
           </div>
         </div>
       </div>

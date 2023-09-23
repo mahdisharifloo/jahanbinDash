@@ -21,7 +21,7 @@
         var platform = "{{ platform }}";
     </script>
     <div class="row">
-        <div class="col-lg-6 col-sm-6 text-center">
+        <div class="text-center">
             <div class="card  card-tasks text-right">
                 <div class="card-header text-right">
                     <h6 class="title d-inline">{{ platform }}</h6>
@@ -33,24 +33,28 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row text-right">
         <div>
             <ul>
-                <li class="header-title"> برچسب عملیات روانی را مشخص کنید </li>
-                <li class="button-container">
+                <li class="header-title text-right"> برچسب عملیات روانی را مشخص کنید </li>
+                <li class="button-container text-right">
                     <a href="{{ currentUrl }}?info_service_label=mali_tajhizat&platform={{ platform }}&record_id={{ record_id }}"
-                        class="btn btn-primary btn-block btn-round">مسائل مالی و تجهیزات</a>
+                        class="btn btn-round">مسائل مالی و تجهیزات</a>
                     <a href="{{ currentUrl }}?info_service_label=nezami_aghidati&platform={{ platform }}&record_id={{ record_id }}"
-                        class="btn btn-primary btn-block btn-round">مسائل عقیدتی و نظامی</a>
-                    <a href="{{ currentUrl }}?info_service_label=tahrik_eteraz&platform={{ platform }}&record_id={{ record_id }}"
-                        class="btn btn-primary btn-block btn-round">تحریک و اعتراض کارکنان</a>
+                        class="btn btn-round">مسائل عقیدتی و نظامی</a>
                     <a href="{{ currentUrl }}?info_service_label=etemad_zodaei_modiriati&platform={{ platform }}&record_id={{ record_id }}"
-                        class="btn btn-primary btn-block btn-round">مسائل مدیریتی و اعتمادزدایی</a>
+                        class="btn btn-round">مسائل مدیریتی و اعتمادزدایی</a>
+                </li>
+                <li class="button-container text-right">
+                    <a href="{{ currentUrl }}?info_service_label=tahrik_eteraz&platform={{ platform }}&record_id={{ record_id }}"
+                        class="btn btn-round">تحریک و اعتراض کارکنان</a>
                     <a href="{{ currentUrl }}?info_service_label=tazad_ekhtelaf&platform={{ platform }}&record_id={{ record_id }}"
-                        class="btn btn-primary btn-block btn-round">تضادها و اختلاف‌ها</a>
+                        class="btn btn-round">تضادها و اختلاف‌ها</a>
                     <a href="{{ currentUrl }}?info_service_label=khodi&platform={{ platform }}&record_id={{ record_id }}"
-                        class="btn btn-primary btn-block btn-round"> اقدام خودی </a>
+                        class="btn btn-round"> اقدام خودی </a>
                     <a href="{{ currentUrl }}?info_service_label=unknown&platform={{ platform }}&record_id={{ record_id }}"
-                        class="btn btn-primary btn-block btn-round"> نامربوط </a>
+                        class="btn btn-round"> نامربوط </a>
 
                 </li>
             </ul>

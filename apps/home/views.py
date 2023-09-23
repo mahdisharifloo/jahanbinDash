@@ -379,7 +379,7 @@ def instagram_dashboard(request):
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]
-    context['sunburst'] = sunburst_chart
+    context['sunburst_data'] = sunburst_chart
     
     # context['sunburst_parents'] =  sunburst_chart['parents']
     # context['sunburst_values'] =    sunburst_chart['values']  
@@ -426,7 +426,7 @@ def twitter_dashboard(request):
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]
-    context['sunburst'] = sunburst_chart
+    context['sunburst_data'] = sunburst_chart
     
     # context['sunburst_parents'] =  sunburst_chart['parents']
     # context['sunburst_values'] =    sunburst_chart['values']  
@@ -474,7 +474,7 @@ def agency_news_dashboard(request):
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]
-    context['sunburst'] = sunburst_chart
+    context['sunburst_data'] = sunburst_chart
     
     # context['sunburst_parents'] =  sunburst_chart['parents']
     # context['sunburst_values'] =    sunburst_chart['values']  
@@ -522,7 +522,7 @@ def telegram_group_dashboard(request):
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]
-    # context['sunburst'] = sunburst_chart
+    context['sunburst_data'] = sunburst_chart
     
     # context['sunburst_parents'] =  sunburst_chart['parents']
     # context['sunburst_values'] =    sunburst_chart['values']  
@@ -570,7 +570,7 @@ def telegram_chanel_dashboard(request):
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]
-    context['sunburst'] = sunburst_chart
+    context['sunburst_data'] = sunburst_chart
     
     # context['sunburst_parents'] =  sunburst_chart['parents']
     # context['sunburst_values'] =    sunburst_chart['values']  
