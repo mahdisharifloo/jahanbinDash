@@ -13,6 +13,22 @@ from jdatetime import datetime as jdatetime
 from datetime import datetime
 
 
+def get_persian_date_format(record_datetiem,format_string):
+    # Define Farsi day and month names
+    farsi_day_names = ["شنبه", "یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"]
+    farsi_month_names = [
+        "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
+        "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"
+    ]
+    created_at = datetime.strptime(record_datetiem, format_string)
+    jalali_datetime = jdatetime.fromgregorian(datetime=created_at)
+    # Format the Jalali datetime in Farsi
+    formatted_jalali_datetime = farsi_day_names[jalali_datetime.weekday()] + "، " + \
+                                str(jalali_datetime.day) + " " + \
+                                farsi_month_names[jalali_datetime.month - 1] + " " + \
+                                str(jalali_datetime.year) + " - " + \
+                                jalali_datetime.strftime("%H:%M")
+    return formatted_jalali_datetime
 
 def get_statistic_data(host):
     url =  f"http://{host}/get_statistics"
@@ -240,6 +256,13 @@ def filtered_news(request):
 
     if query:
         news_list,pages = search_get_news(host,query,time_filtering,page)
+        format_string1 = "%Y-%m-%dT%H:%M:%S.%f"
+        format_string2 = '%Y-%m-%dT%H:%M:%S'
+        for d in news_list:
+            if len(d['created_at'].split('.'))==2:
+                d['jcreated_at'] = get_persian_date_format(d['created_at'], format_string1)
+            else:
+                d['jcreated_at'] = get_persian_date_format(d['created_at'], format_string2)
         context["pages"]=pages
         context['news_list1']=news_list[:int(len(news_list)/2)]
         context['news_list2']=news_list[int(len(news_list)/2):]
@@ -252,6 +275,13 @@ def filtered_news(request):
                          category=category,
                          inteligence_service_category=inteligence_service_category,
                          time_filtering=time_filtering)
+    format_string1 = "%Y-%m-%dT%H:%M:%S.%f"
+    format_string2 = '%Y-%m-%dT%H:%M:%S'
+    for d in news_list:
+        if len(d['created_at'].split('.'))==2:
+            d['jcreated_at'] = get_persian_date_format(d['created_at'], format_string1)
+        else:
+            d['jcreated_at'] = get_persian_date_format(d['created_at'], format_string2)
     context["pages"]=pages
     context['news_list1']=news_list[:int(len(news_list)/2)]
     context['news_list2']=news_list[int(len(news_list)/2):]
@@ -287,6 +317,13 @@ def news_cards(request):
     page = request.GET.get('page', '') 
     if query:
         news_list,pages = search_get_news(host,query,time_filtering,page)
+        format_string1 = "%Y-%m-%dT%H:%M:%S.%f"
+        format_string2 = '%Y-%m-%dT%H:%M:%S'
+        for d in news_list:
+            if len(d['created_at'].split('.'))==2:
+                d['jcreated_at'] = get_persian_date_format(d['created_at'], format_string1)
+            else:
+                d['jcreated_at'] = get_persian_date_format(d['created_at'], format_string2)
         context = {
             "pages":pages,
             'news_list1':news_list[:int(len(news_list)/2)],
@@ -588,24 +625,13 @@ def labeling(request):
     platform_list = ["instagram","twitter","telegram_group","telegram_channel","news_agency"]
     platform = random.choice(platform_list)
     record = get_for_labeling(platform=platform)
-    format_string = "%Y-%m-%dT%H:%M:%S.%f"
-    # Define Farsi day and month names
-    farsi_day_names = ["شنبه", "یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"]
-    farsi_month_names = [
-        "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
-        "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"
-    ]
-    created_at = datetime.strptime(record['created_at'], format_string)
-    jalali_datetime = jdatetime.fromgregorian(datetime=created_at)
-    # Format the Jalali datetime in Farsi
-    formatted_jalali_datetime = farsi_day_names[jalali_datetime.weekday()] + "، " + \
-                                str(jalali_datetime.day) + " " + \
-                                farsi_month_names[jalali_datetime.month - 1] + " " + \
-                                str(jalali_datetime.year) + " - " + \
-                                jalali_datetime.strftime("%H:%M")
-    # context['jcreated_at'] = jalali_datetime.strftime("%A, %d %B %Y - %H:%M")
     context = {}
-    context['jcreated_at'] = formatted_jalali_datetime
+    format_string1 = "%Y-%m-%dT%H:%M:%S.%f"
+    format_string2 = '%Y-%m-%dT%H:%M:%S'
+    if len(record['created_at'].split('.'))==2:
+        context['jcreated_at'] = get_persian_date_format(record['created_at'], format_string1)
+    else:
+        context['jcreated_at'] = get_persian_date_format(record['created_at'], format_string2)
     context['platform'] = platform
     context['record'] = record
     context['record_id'] = record['_id']

@@ -75,6 +75,120 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-6">
+      <div class="card card-chart">
+        <div class="card-header ">
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <h4 class="card-category">عملیات روانی</h4>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="myDiv" style="width:100%;height: 600px;"></div>
+          <script>
+            var data = [{
+              type: "sunburst",
+              labels: [
+                "مسائل مالی و تجهیزات",
+                "مسائل عقیدتی و نظامی",
+                "تحریک و اعتراض کارکنان",
+                "مسائل مدیریتی و اعتمادزدایی",
+                "تضادها و اختلاف‌ها",
+                "اقدام خودی",
+                "نامربوط"
+              ],
+              parents: [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              values: ui_sunburst_data,
+              outsidetextfont: { size: 20, color: "#377eb8" },
+              leaf: { opacity: 0.4 },
+              marker: { line: { width: 2 } },
+            }];
+
+            var layout = {
+              margin: { l: 0, r: 0, b: 0, t: 0 },
+              width: 500,
+              height: 500
+            };
+
+            Plotly.newPlot('myDiv', data, layout);
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-6 text-center">
+      <div class="card  card-tasks text-right">
+        <div class="card-header text-right">
+          <h6 class="title d-inline">محدود سازی تاریخ</h6>
+          <div class="dropdown float-left">
+            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">یک هفته اخیر</a>
+              <a class="dropdown-item" href="#">یک ماه اخیر</a>
+              <a class="dropdown-item" href="#">سه ماه اخیر</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="card-body">
+            <input type="text" id="test-date-id">
+            <script>
+              kamaDatepicker('test-date-id', { buttonsColor: "red", forceFarsiDigits: true });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <div class="card-header text-right">
+        <h4 class="card-category"> ابر موجودیت روزانه </h4>
+        <div>
+          <img src="{{ ASSETS_ROOT }}/img/1d_instagram.jpg" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center">
+      <div class="card-header text-right">
+        <h4 class="card-category"> ابر موجودیت هفتگی </h4>
+        <div>
+          <img src="{{ ASSETS_ROOT }}/img/7d_instagram.jpg" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <div class="card-header text-right">
+        <h4 class="card-category"> ابر موجودیت یک ماهه </h4>
+        <div>
+          <img src="{{ ASSETS_ROOT }}/img/30d_instagram.jpg" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center">
+      <div class="card-header text-right">
+        <h4 class="card-category"> ابر موجودیت سه ماهه </h4>
+        <div>
+          <img src="{{ ASSETS_ROOT }}/img/90d_instagram.jpg" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -216,120 +330,6 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-lg-6 text-center">
-      <div class="card-header text-right">
-        <h4 class="card-category"> ابر موجودیت روزانه </h4>
-        <div>
-          <img src="{{ ASSETS_ROOT }}/img/1d_instagram.jpg" alt="...">
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6 text-center">
-      <div class="card-header text-right">
-        <h4 class="card-category"> ابر موجودیت هفتگی </h4>
-        <div>
-          <img src="{{ ASSETS_ROOT }}/img/7d_instagram.jpg" alt="...">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-lg-6 text-center">
-      <div class="card-header text-right">
-        <h4 class="card-category"> ابر موجودیت یک ماهه </h4>
-        <div>
-          <img src="{{ ASSETS_ROOT }}/img/30d_instagram.jpg" alt="...">
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6 text-center">
-      <div class="card-header text-right">
-        <h4 class="card-category"> ابر موجودیت سه ماهه </h4>
-        <div>
-          <img src="{{ ASSETS_ROOT }}/img/90d_instagram.jpg" alt="...">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-6">
-      <div class="card card-chart">
-        <div class="card-header ">
-          <div class="row">
-            <div class="col-sm-6 text-right">
-              <h4 class="card-category">عملیات روانی</h4>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div id="myDiv" style="width:100%;height: 600px;"></div>
-          <script>
-            var data = [{
-              type: "sunburst",
-              labels: [
-                "مسائل مالی و تجهیزات",
-                "مسائل عقیدتی و نظامی",
-                "تحریک و اعتراض کارکنان",
-                "مسائل مدیریتی و اعتمادزدایی",
-                "تضادها و اختلاف‌ها",
-                "اقدام خودی",
-                "نامربوط"
-              ],
-              parents: [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-              ],
-              values: ui_sunburst_data,
-              outsidetextfont: { size: 20, color: "#377eb8" },
-              leaf: { opacity: 0.4 },
-              marker: { line: { width: 2 } },
-            }];
-
-            var layout = {
-              margin: { l: 0, r: 0, b: 0, t: 0 },
-              width: 500,
-              height: 500
-            };
-
-            Plotly.newPlot('myDiv', data, layout);
-          </script>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6 col-sm-6 text-center">
-      <div class="card  card-tasks text-right">
-        <div class="card-header text-right">
-          <h6 class="title d-inline">محدود سازی تاریخ</h6>
-          <div class="dropdown float-left">
-            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">یک هفته اخیر</a>
-              <a class="dropdown-item" href="#">یک ماه اخیر</a>
-              <a class="dropdown-item" href="#">سه ماه اخیر</a>
-            </div>
-          </div>
-        </div>
-        <div class="card-body ">
-          <div class="card-body">
-            <input type="text" id="test-date-id">
-            <script>
-              kamaDatepicker('test-date-id', { buttonsColor: "red", forceFarsiDigits: true });
-            </script>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 {% endblock content %}
 <!-- Specific Page JS goes HERE  -->
