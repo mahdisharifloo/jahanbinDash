@@ -10,7 +10,7 @@ import json
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from jdatetime import datetime as jdatetime
-from datetime import datetime
+from datetime import datetime , timedelta
 
 
 def get_persian_date_format(record_datetiem,format_string):
@@ -34,7 +34,7 @@ def get_statistic_data(host):
     url =  f"http://{host}/get_statistics"
 
     # querystring = {
-    #     'time_filter':time_filter
+    #     'charts_time_filter':charts_time_filter
     # }
     payload = {}
     headers = {
@@ -62,18 +62,18 @@ def get_statistic_data(host):
     }
     return context
 
-def get_sunburst_data( host):
+def get_sunburst_data( host,charts_time_filter):
     url =  f"http://{host}/sunbert_churt_data"
-    # querystring = {
-    #     'time_filter':time_filter
-    # }
+    querystring = {
+        'charts_time_filter':charts_time_filter
+    }
     payload = {}
     headers = {
     'accept': 'application/json'
     }
 
     response = requests.request("POST", url, headers=headers, data=payload, 
-                                # params=querystring
+                                params=querystring
                                 )
 
     context = json.loads(response.text)
@@ -378,6 +378,7 @@ def pages(request):
 
 @login_required(login_url="/login/")
 def instagram_dashboard(request):
+    charts_time_filter =  request.GET.get('charts_time_filter', '') 
     time_filtering = request.GET.get('time_filtering', '6m') 
     platform = request.GET.get('platform', '') 
     instagram_host = f"{settings.STATISTIC_INSTAGRAM_API_URL}:10011"
@@ -410,9 +411,12 @@ def instagram_dashboard(request):
             }
         html_template = loader.get_template('home/notifications.html')
         return HttpResponse(html_template.render(context, request))
-    
+    datetime_chart_filter = ''
+    if charts_time_filter:
+        jdatetime_chart_filter = jdatetime.strptime(charts_time_filter, "%Y/%m/%d")
+        datetime_chart_filter = jdatetime_chart_filter.togregorian().isoformat()
     context = get_statistic_data(host)
-    sunburst_chart = get_sunburst_data(host)
+    sunburst_chart = get_sunburst_data(host,datetime_chart_filter)
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]
@@ -426,6 +430,7 @@ def instagram_dashboard(request):
 
 @login_required(login_url="/login/")
 def twitter_dashboard(request):
+    charts_time_filter =  request.GET.get('charts_time_filter', '') 
     time_filtering = request.GET.get('time_filtering', '6m') 
     platform = request.GET.get('platform', '') 
     instagram_host = f"{settings.STATISTIC_INSTAGRAM_API_URL}:10011"
@@ -457,9 +462,12 @@ def twitter_dashboard(request):
             }
         html_template = loader.get_template('home/notifications.html')
         return HttpResponse(html_template.render(context, request))
-    
+    datetime_chart_filter = ''
+    if charts_time_filter:
+        jdatetime_chart_filter = jdatetime.strptime(charts_time_filter, "%Y/%m/%d")
+        datetime_chart_filter = jdatetime_chart_filter.togregorian().isoformat()
     context = get_statistic_data(host)
-    sunburst_chart = get_sunburst_data(host)
+    sunburst_chart = get_sunburst_data(host,datetime_chart_filter)
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]
@@ -473,6 +481,7 @@ def twitter_dashboard(request):
 
 @login_required(login_url="/login/")
 def agency_news_dashboard(request):
+    charts_time_filter =  request.GET.get('charts_time_filter', '') 
     time_filtering = request.GET.get('time_filtering', '6m') 
     platform = request.GET.get('platform', '') 
     instagram_host = f"{settings.STATISTIC_INSTAGRAM_API_URL}:10011"
@@ -505,9 +514,12 @@ def agency_news_dashboard(request):
             }
         html_template = loader.get_template('home/notifications.html')
         return HttpResponse(html_template.render(context, request))
-    
+    datetime_chart_filter = ''
+    if charts_time_filter:
+        jdatetime_chart_filter = jdatetime.strptime(charts_time_filter, "%Y/%m/%d")
+        datetime_chart_filter = jdatetime_chart_filter.togregorian().isoformat()
     context = get_statistic_data(host)
-    sunburst_chart = get_sunburst_data(host)
+    sunburst_chart = get_sunburst_data(host,datetime_chart_filter)
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]
@@ -521,6 +533,7 @@ def agency_news_dashboard(request):
 
 @login_required(login_url="/login/")
 def telegram_group_dashboard(request):
+    charts_time_filter =  request.GET.get('charts_time_filter', '') 
     time_filtering = request.GET.get('time_filtering', '6m') 
     platform = request.GET.get('platform', '') 
     instagram_host = f"{settings.STATISTIC_INSTAGRAM_API_URL}:10011"
@@ -553,9 +566,12 @@ def telegram_group_dashboard(request):
             }
         html_template = loader.get_template('home/notifications.html')
         return HttpResponse(html_template.render(context, request))
-    
+    datetime_chart_filter = ''
+    if charts_time_filter:
+        jdatetime_chart_filter = jdatetime.strptime(charts_time_filter, "%Y/%m/%d")
+        datetime_chart_filter = jdatetime_chart_filter.togregorian().isoformat()
     context = get_statistic_data(host)
-    sunburst_chart = get_sunburst_data(host)
+    sunburst_chart = get_sunburst_data(host,datetime_chart_filter)
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]
@@ -569,6 +585,7 @@ def telegram_group_dashboard(request):
 
 @login_required(login_url="/login/")
 def telegram_chanel_dashboard(request):
+    charts_time_filter =  request.GET.get('charts_time_filter', '') 
     time_filtering = request.GET.get('time_filtering', '6m') 
     platform = request.GET.get('platform', '') 
     instagram_host = f"{settings.STATISTIC_INSTAGRAM_API_URL}:10011"
@@ -601,9 +618,12 @@ def telegram_chanel_dashboard(request):
             }
         html_template = loader.get_template('home/notifications.html')
         return HttpResponse(html_template.render(context, request))
-    
+    datetime_chart_filter = ''
+    if charts_time_filter:
+        jdatetime_chart_filter = jdatetime.strptime(charts_time_filter, "%Y/%m/%d")
+        datetime_chart_filter = jdatetime_chart_filter.togregorian().isoformat()
     context = get_statistic_data(host)
-    sunburst_chart = get_sunburst_data(host)
+    sunburst_chart = get_sunburst_data(host,datetime_chart_filter)
     news_list, _ = get_news(host=host,time_filtering=time_filtering)
     context['rank_news_list1'] = news_list[:5]
     context['rank_news_list2'] = news_list[5:]

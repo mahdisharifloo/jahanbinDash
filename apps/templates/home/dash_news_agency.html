@@ -32,6 +32,21 @@
 
   </script>
 
+
+<script>
+  const handleKeyDownForFilterDate = (e) => {
+      if (e.key === "Enter") {
+          const searchQuery = document.getElementById("test-date-id").value;
+          const encodedQuery = encodeURIComponent(searchQuery);
+          const url = "/instagram?charts_time_filter=" + encodedQuery; // Replace with your desired URL
+          window.location.href = url;
+      }
+  };
+</script>
+
+
+
+
   <div class="row">
     <div class="col-12">
       <div class="card card-chart">
@@ -130,19 +145,10 @@
       <div class="card  card-tasks text-right">
         <div class="card-header text-right">
           <h6 class="title d-inline">محدود سازی تاریخ</h6>
-          <div class="dropdown float-left">
-            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">یک هفته اخیر</a>
-              <a class="dropdown-item" href="#">یک ماه اخیر</a>
-              <a class="dropdown-item" href="#">سه ماه اخیر</a>
-            </div>
-          </div>
         </div>
         <div class="card-body ">
           <div class="card-body">
-            <input type="text" id="test-date-id">
+            <input type="text" id="test-date-id" onkeydown="handleKeyDownForFilterDate(event)">
             <script>
               kamaDatepicker('test-date-id', { buttonsColor: "red", forceFarsiDigits: true });
             </script>
@@ -151,6 +157,7 @@
       </div>
     </div>
   </div>
+
 
 
   <div class="row">
