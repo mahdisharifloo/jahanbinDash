@@ -7,6 +7,19 @@
 
 {% block content %}
 
+
+<script>
+  const handleKeyDownForSearchPannel = (e) => {
+      if (e.key === "Enter") {
+          const searchQuery = document.getElementById("searchInput").value;
+          const encodedQuery = encodeURIComponent(searchQuery);
+          const url = "/?query=" + encodedQuery; // Replace with your desired URL
+          window.location.href = url;
+      }
+  };
+</script>
+
+
   <div class="content">
     <div>
       <ul class="pagination">
@@ -43,8 +56,6 @@
               <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=news_agency&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">خبرگزاری ها</a> 
             </div>
           </li>
-
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               بازه زمانی
@@ -61,10 +72,6 @@
               <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=1y&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1y</a> 
             </div>
           </li>
-          
-
-
-          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               احساسات
@@ -77,7 +84,6 @@
               <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=very negative&">خیلی بد</a> 
             </div>
           </li>
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               دسته بندی
@@ -93,7 +99,6 @@
               <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=علمی فناوری&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">عملی فناوری</a>
             </div>
           </li>
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               عملیات روانی
@@ -107,6 +112,9 @@
               <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=khodi">اقدام خودی</a> 
               <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=unknown">نامربوط</a> 
             </div>
+          </li>
+          <li class="nav-item active">
+            <input type="text" class="form-control search-input" id="searchInput" placeholder="جست‌وجو" onkeydown="handleKeyDownForSearchPannel(event)">
           </li>
         </ul>
       </div>
