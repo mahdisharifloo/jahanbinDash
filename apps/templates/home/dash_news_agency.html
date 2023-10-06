@@ -38,7 +38,7 @@
       if (e.key === "Enter") {
           const searchQuery = document.getElementById("test-date-id").value;
           const encodedQuery = encodeURIComponent(searchQuery);
-          const url = "/instagram?charts_time_filter=" + encodedQuery; // Replace with your desired URL
+          const url = "/agency_news?charts_time_filter=" + encodedQuery; // Replace with your desired URL
           window.location.href = url;
       }
   };
