@@ -241,7 +241,7 @@ def filtered_news(request):
     telegram_group_host = f"{settings.STATISTIC_TELEGRAM_GROUP_API_URL}:10012"
     telegram_channel_host = f"{settings.STATISTIC_TELEGRAM_CHANNEL_API_URL}:10013"
     news_agency_host = f"{settings.STATISTIC_NEWS_AGENCY_API_URL}:10014"
-    host = news_agency_host
+    host = telegram_channel_host
     if platform:
         if platform == "instagram":
             host = instagram_host
@@ -300,7 +300,7 @@ def news_cards(request):
     telegram_group_host = f"{settings.STATISTIC_TELEGRAM_GROUP_API_URL}:10012"
     telegram_channel_host = f"{settings.STATISTIC_TELEGRAM_CHANNEL_API_URL}:10013"
     news_agency_host = f"{settings.STATISTIC_NEWS_AGENCY_API_URL}:10014"
-    host = news_agency_host
+    host = telegram_channel_host
     if platform:
         if platform == "instagram":
             host = instagram_host
@@ -642,7 +642,7 @@ def labeling(request):
     record_platform = request.GET.get('platform', '') 
     if info_service_label and record_id and record_platform:
         update_info_service_label(record_platform,record_id,info_service_label) 
-    platform_list = ["instagram","twitter","telegram_group","telegram_channel","news_agency"]
+    platform_list = ["instagram","twitter","telegram_group","telegram_channel"]
     platform = random.choice(platform_list)
     record = get_for_labeling(platform=platform)
     context = {}
