@@ -32,7 +32,7 @@
   </script>
 
 
-<script>
+  <!-- <script>
   const handleKeyDownForFilterDate = (e) => {
       if (e.key === "Enter") {
           const searchQuery = document.getElementById("test-date-id").value;
@@ -41,7 +41,7 @@
           window.location.href = url;
       }
   };
-</script>
+</script> -->
 
 
 
@@ -144,206 +144,226 @@
         <div class="card-header text-right">
           <h6 class="title d-inline">محدود سازی تاریخ</h6>
         </div>
-        <div class="card-body ">
+        <div class="card-body">
+          <div class="row">
+            <div>
+              <input type="text" id="test-date-id">
+              <script>
+                kamaDatepicker('test-date-id', { buttonsColor: "red", forceFarsiDigits: true });
+              </script>
+            </div>
+            <div style="margin-left: 50px;">
+            </div>
+            <div>
+              <button id="filterButton" class="btn btn-primary" onclick="handleFilterDate()">
+                محدودسازی
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <script>
+      // JavaScript function to handle the button click
+      const handleFilterDate = () => {
+        const searchQuery = document.getElementById("test-date-id").value;
+        const encodedQuery = encodeURIComponent(searchQuery);
+        const url = "/telegram_group?charts_time_filter=" + encodedQuery; // Replace with your desired URL
+        window.location.href = url;
+      };
+    </script>
+
+    <div class="row">
+      <div class="col-lg-6 text-center">
+        <div class="card-header text-right">
+          <h4 class="card-category"> ابر موجودیت روزانه </h4>
+          <div>
+            <img src="{{ ASSETS_ROOT }}/img/1d_telegram_group.jpg" alt="...">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <div class="card-header text-right">
+          <h4 class="card-category"> ابر موجودیت هفتگی </h4>
+          <div>
+            <img src="{{ ASSETS_ROOT }}/img/7d_telegram_group.jpg" alt="...">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 text-center">
+        <div class="card-header text-right">
+          <h4 class="card-category"> ابر موجودیت یک ماهه </h4>
+          <div>
+            <img src="{{ ASSETS_ROOT }}/img/30d_telegram_group.jpg" alt="...">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <div class="card-header text-right">
+          <h4 class="card-category"> ابر موجودیت سه ماهه </h4>
+          <div>
+            <img src="{{ ASSETS_ROOT }}/img/30d_telegram_group.jpg" alt="...">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 text-right">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h4 class="card-category">منابع خبری تحت پوشش اطلاعاتی</h4>
+          </div>
           <div class="card-body">
-            <input type="text" id="test-date-id" onkeydown="handleKeyDownForFilterDate(event)">
-            <script>
-              kamaDatepicker('test-date-id', { buttonsColor: "red", forceFarsiDigits: true });
-            </script>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-lg-6 text-center">
-      <div class="card-header text-right">
-        <h4 class="card-category"> ابر موجودیت روزانه </h4>
-        <div>
-          <img src="{{ ASSETS_ROOT }}/img/1d_telegram_group.jpg" alt="...">
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6 text-center">
-      <div class="card-header text-right">
-        <h4 class="card-category"> ابر موجودیت هفتگی </h4>
-        <div>
-          <img src="{{ ASSETS_ROOT }}/img/7d_telegram_group.jpg" alt="...">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-6 text-center">
-      <div class="card-header text-right">
-        <h4 class="card-category"> ابر موجودیت یک ماهه </h4>
-        <div>
-          <img src="{{ ASSETS_ROOT }}/img/30d_telegram_group.jpg" alt="...">
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6 text-center">
-      <div class="card-header text-right">
-        <h4 class="card-category"> ابر موجودیت سه ماهه </h4>
-        <div>
-          <img src="{{ ASSETS_ROOT }}/img/30d_telegram_group.jpg" alt="...">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-4 text-right">
-      <div class="card card-chart">
-        <div class="card-header">
-          <h4 class="card-category">منابع خبری تحت پوشش اطلاعاتی</h4>
-        </div>
-        <div class="card-body">
-          <div class="chart-area">
-            <canvas id="chartLinePurple"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 text-right">
-      <div class="card card-chart">
-        <div class="card-header">
-          <h4 class="card-category">حجم خبری در مورد نیرو های مسلح </h4>
-        </div>
-        <div class="card-body">
-          <div class="chart-area">
-            <canvas id="CountryChart"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 text-right">
-      <div class="card card-chart">
-        <div class="card-header">
-          <h4 class="card-category">حجم خبری غیره مرتبط با اهداف سامانه</h4>
-        </div>
-        <div class="card-body">
-          <div class="chart-area">
-            <canvas id="chartLineGreen"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-6 col-sm-6 text-center">
-      <div class="card  card-tasks text-right">
-        <div class="card-header text-right">
-          <h6 class="title d-inline">برتین های</h6>
-          <p class="card-category d-inline">امروز</p>
-          <div class="dropdown float-left">
-            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">براساس زمان</a>
-              <a class="dropdown-item" href="#">براساس تعداد کامنت</a>
-              <a class="dropdown-item" href="#">براساس تعداد لایک</a>
+            <div class="chart-area">
+              <canvas id="chartLinePurple"></canvas>
             </div>
           </div>
         </div>
-        <div class="card-body ">
-          <div class="table-full-width table-responsive">
-            <table class="table">
-              <tbody>
-                {% for news in rank_news_list1 %}
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">{{ news.clean_context }}</p>
-                    <p class="text-muted">{{ news.peer_title }}</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
-    </div>
-    <div class="col-lg-6 col-sm-6 text-center">
-      <div class="card  card-tasks text-right">
-        <div class="card-header text-right">
-          <h6 class="title d-inline">برتین های</h6>
-          <p class="card-category d-inline">هفته</p>
-          <div class="dropdown float-left">
-            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">براساس زمان</a>
-              <a class="dropdown-item" href="#">براساس تعداد کامنت</a>
-              <a class="dropdown-item" href="#">براساس تعداد لایک</a>
+      <div class="col-lg-4 text-right">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h4 class="card-category">حجم خبری در مورد نیرو های مسلح </h4>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas id="CountryChart"></canvas>
             </div>
           </div>
         </div>
-        <div class="card-body ">
-          <div class="table-full-width table-responsive">
-            <table class="table">
-              <tbody>
-                {% for news in rank_news_list2 %}
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">{{ news.content }}</p>
-                    <p class="text-muted">{{ news.source }}</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+      </div>
+      <div class="col-lg-4 text-right">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h4 class="card-category">حجم خبری غیره مرتبط با اهداف سامانه</h4>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas id="chartLineGreen"></canvas>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 text-center">
+        <div class="card  card-tasks text-right">
+          <div class="card-header text-right">
+            <h6 class="title d-inline">برتین های</h6>
+            <p class="card-category d-inline">امروز</p>
+            <div class="dropdown float-left">
+              <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">براساس زمان</a>
+                <a class="dropdown-item" href="#">براساس تعداد کامنت</a>
+                <a class="dropdown-item" href="#">براساس تعداد لایک</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body ">
+            <div class="table-full-width table-responsive">
+              <table class="table">
+                <tbody>
+                  {% for news in rank_news_list1 %}
+                  <tr>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="text-right">
+                      <p class="title">{{ news.clean_context }}</p>
+                      <p class="text-muted">{{ news.peer_title }}</p>
+                    </td>
+                    <td class="td-actions">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link"
+                        data-original-title="مهمة تحرير">
+                        <i class="tim-icons icon-settings"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-6 text-center">
+        <div class="card  card-tasks text-right">
+          <div class="card-header text-right">
+            <h6 class="title d-inline">برتین های</h6>
+            <p class="card-category d-inline">هفته</p>
+            <div class="dropdown float-left">
+              <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">براساس زمان</a>
+                <a class="dropdown-item" href="#">براساس تعداد کامنت</a>
+                <a class="dropdown-item" href="#">براساس تعداد لایک</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body ">
+            <div class="table-full-width table-responsive">
+              <table class="table">
+                <tbody>
+                  {% for news in rank_news_list2 %}
+                  <tr>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="text-right">
+                      <p class="title">{{ news.content }}</p>
+                      <p class="text-muted">{{ news.source }}</p>
+                    </td>
+                    <td class="td-actions">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link"
+                        data-original-title="مهمة تحرير">
+                        <i class="tim-icons icon-settings"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+  {% endblock content %}
+  <!-- Specific Page JS goes HERE  -->
+  {% block javascripts %}
 
-</div>
-{% endblock content %}
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
+  <script>
+    $(document).ready(function () {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
 
-<script>
-  $(document).ready(function () {
-    // Javascript method's body can be found in assets/js/demos.js
-    demo.initDashboardPageCharts();
+    });
+  </script>
 
-  });
-</script>
-
-{% endblock javascripts %}
+  {% endblock javascripts %}

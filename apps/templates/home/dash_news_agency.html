@@ -33,7 +33,7 @@
   </script>
 
 
-<script>
+<!-- <script>
   const handleKeyDownForFilterDate = (e) => {
       if (e.key === "Enter") {
           const searchQuery = document.getElementById("test-date-id").value;
@@ -42,7 +42,7 @@
           window.location.href = url;
       }
   };
-</script>
+</script> -->
 
 
 
@@ -144,19 +144,37 @@
     <div class="col-lg-6 col-sm-6 text-center">
       <div class="card  card-tasks text-right">
         <div class="card-header text-right">
-          <h6 class="title d-inline">محدود سازی تاریخ</h6>
+            <h6 class="title d-inline">محدود سازی تاریخ</h6>
         </div>
-        <div class="card-body ">
-          <div class="card-body">
-            <input type="text" id="test-date-id" onkeydown="handleKeyDownForFilterDate(event)">
+        <div class="card-body">
+          <div class="row">
+            <div>
+            <input type="text" id="test-date-id">
             <script>
-              kamaDatepicker('test-date-id', { buttonsColor: "red", forceFarsiDigits: true });
+                kamaDatepicker('test-date-id', { buttonsColor: "red", forceFarsiDigits: true });
             </script>
+            </div>
+            <div style="margin-left: 50px;">
+            </div>
+            <div>
+              <button id="filterButton" class="btn btn-primary" onclick="handleFilterDate()">
+                محدودسازی
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
+
+<script>
+  // JavaScript function to handle the button click
+  const handleFilterDate = () => {
+      const searchQuery = document.getElementById("test-date-id").value;
+      const encodedQuery = encodeURIComponent(searchQuery);
+      const url = "/agency_news?charts_time_filter=" + encodedQuery; // Replace with your desired URL
+      window.location.href = url;
+  };
+</script>
 
 
 
