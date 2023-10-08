@@ -70,7 +70,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.975rem;
   font-weight: 400;
   line-height: 1.5;
   color: #525f7f;
@@ -172,7 +172,7 @@ code,
 kbd,
 samp {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 1em; }
+  font-size: 2em; }
 
 pre {
   margin-top: 0;
@@ -196,8 +196,8 @@ table {
 caption {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  color: #6c757d;
-  text-align: left;
+  color: #000000;
+  text-align: right;
   caption-side: bottom; }
 
 th {
@@ -323,13 +323,13 @@ h1, h2, h3, h4, h5, h6,
   font-family: inherit;
   font-weight: 400;
   line-height: 1.2;
-  color: #32325d; }
+  color: #000000; }
 
 h1, .h1 {
-  font-size: 2.0625rem; }
+  font-size: 2.6rem; }
 
 h2, .h2 {
-  font-size: 1.6875rem; }
+  font-size: 1.55rem; }
 
 h3, .h3 {
   font-size: 1.4375rem; }
@@ -433,10 +433,10 @@ mark,
 
 .figure-caption {
   font-size: 90%;
-  color: #6c757d; }
+  color: #000000; }
 
 code {
-  font-size: 87.5%;
+  font-size: 97.5%;
   color: #f3a4b5;
   word-break: break-word; }
   a > code {
@@ -1386,7 +1386,7 @@ pre {
   width: 100%;
   height: calc(2.25rem + 2px);
   padding: 0.5rem 0.7rem;
-  font-size: 0.875rem;
+  font-size: 0.975rem;
   font-weight: 400;
   line-height: 1.42857;
   color: rgba(255, 255, 255, 0.8);
@@ -1771,7 +1771,7 @@ textarea.form-control {
   background-color: transparent;
   border: 1px solid transparent;
   padding: 11px 40px;
-  font-size: 0.875rem;
+  font-size: 0.999rem;
   line-height: 1.35em;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
@@ -2416,18 +2416,18 @@ input[type="button"].btn-block {
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   z-index: 1000;
   display: none;
-  float: left;
+  float: right;
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
-  font-size: 0.875rem;
-  color: #525f7f;
-  text-align: left;
+  font-size: 1.5rem;
+  color: #000000;
+  text-align: right;
   list-style: none;
-  background-color: #ffffff;
+  background-color: #FAFFCE;
   background-clip: padding-box;
   border: 0 solid rgba(34, 42, 66, 0.15);
   border-radius: 0.1428rem;
@@ -2562,13 +2562,13 @@ input[type="button"].btn-block {
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #212529;
+  color: #000000;
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
   border: 0; }
   .dropdown-item:hover, .dropdown-item:focus {
-    color: #16181b;
+    color: #000000;
     text-decoration: none;
     background-color: #f6f9fc; }
   .dropdown-item.active, .dropdown-item:active {
@@ -2576,7 +2576,7 @@ input[type="button"].btn-block {
     text-decoration: none;
     background-color: #e14eca; }
   .dropdown-item.disabled, .dropdown-item:disabled {
-    color: #6c757d;
+    color: #000000;
     pointer-events: none;
     background-color: transparent; }
 
@@ -2588,13 +2588,13 @@ input[type="button"].btn-block {
   padding: 0.5rem 1.5rem;
   margin-bottom: 0;
   font-size: 0.75rem;
-  color: #6c757d;
+  color: #000000;
   white-space: nowrap; }
 
 .dropdown-item-text {
   display: block;
   padding: 0.25rem 1.5rem;
-  color: #212529; }
+  color: #000000; }
 
 .btn-group,
 .btn-group-vertical {
@@ -3771,7 +3771,7 @@ input[type="button"].btn-block {
 .badge {
   display: inline-block;
   padding: 0.25rem 0.5rem;
-  font-size: 0.62475rem;
+  font-size: 0.92475rem;
   font-weight: 700;
   line-height: 1;
   text-align: center;
@@ -3941,7 +3941,7 @@ input[type="button"].btn-block {
   color: inherit; }
 
 .alert-link {
-  font-weight: 600; }
+  font-weight: 800; }
 
 .alert-dismissible {
   padding-right: 3.8125rem; }
@@ -4070,7 +4070,7 @@ input[type="button"].btn-block {
   display: flex;
   height: 0.5rem;
   overflow: hidden;
-  font-size: 0.65625rem;
+  font-size: 1rem;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 0.875rem;
   box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.3); }
@@ -8378,7 +8378,7 @@ a.text-darker:hover, a.text-darker:focus {
     line-height: 0;
     outline: 0; }
   .alert span[data-notify="icon"] {
-    font-size: 22px;
+    font-size: 45px;
     display: block;
     left: 19px;
     position: absolute;
@@ -8413,7 +8413,7 @@ a.text-darker:hover, a.text-darker:focus {
       top: 1rem;
       right: .5rem; } }
   .alert-dismissible .close > span:not(.sr-only) {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     background-color: transparent;
     color: rgba(255, 255, 255, 0.6); }
   .alert-dismissible .close:hover > span:not(.sr-only), .alert-dismissible .close:focus > span:not(.sr-only) {
@@ -8568,7 +8568,7 @@ a.text-darker:hover, a.text-darker:focus {
     min-width: 2.375rem;
     width: 2.375rem;
     padding: 0;
-    font-size: 0.9375rem;
+    font-size: 1.5rem;
     overflow: hidden;
     position: relative;
     line-height: normal; }
@@ -8596,7 +8596,7 @@ a.text-darker:hover, a.text-darker:focus {
       .navbar .btn-group-sm.navbar-nav > a.btn.btn-icon .fas,
       .navbar .navbar-nav > a.btn.btn-icon.btn-sm .tim-icons,
       .navbar .btn-group-sm.navbar-nav > a.btn.btn-icon .tim-icons {
-        font-size: 0.6875rem; }
+        font-size: 0.8875rem; }
     .btn.btn-icon.btn-lg, .btn-group-lg > .btn.btn-icon,
     .navbar .navbar-nav > a.btn.btn-icon.btn-lg,
     .navbar .btn-group-lg.navbar-nav > a.btn.btn-icon {
@@ -8628,7 +8628,7 @@ a.text-darker:hover, a.text-darker:focus {
     .navbar .navbar-nav > a.btn.btn-icon:not(.btn-footer) .far,
     .navbar .navbar-nav > a.btn.btn-icon:not(.btn-footer) .fas {
       position: absolute;
-      font-size: 1em;
+      font-size: 1.2em;
       top: 50%;
       left: 50%;
       transform: translate(-12px, -12px);
@@ -9314,7 +9314,7 @@ fieldset[disabled]
     background-color: rgba(222, 222, 222, 0.5); }
   .dropdown-menu .dropdown-header:not([href]):not([tabindex]) {
     color: rgba(182, 182, 182, 0.6);
-    font-size: 0.62475rem;
+    font-size: 0.72475rem;
     text-transform: uppercase;
     font-weight: 600; }
   .dropdown-menu.dropdown-primary {
@@ -9553,7 +9553,7 @@ fieldset[disabled]
 .form-control {
   border-color: #2b3553;
   border-radius: 0.4285rem;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out; }
   .form-control:focus {
     border-color: #e14eca;
@@ -9627,7 +9627,7 @@ fieldset[disabled]
 
 .has-success.form-control-lg:after,
 .has-danger.form-control-lg:after {
-  font-size: 13px;
+  font-size: 23px;
   top: 24px; }
 
 .has-success.has-label:after,
@@ -9674,7 +9674,7 @@ img {
     .modal-content .modal-header .modal-title {
       color: #222a42; }
     .modal-content .modal-header i.tim-icons {
-      font-size: 16px; }
+      font-size: 26px; }
   .modal-content .modal-body {
     line-height: 1.9; }
     .modal-content .modal-body p {
@@ -10369,7 +10369,7 @@ img {
   max-width: 650px; }
   .modal-search .modal-dialog input {
     border: none;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 100; }
   .modal-search .modal-dialog span {
     font-size: 35px;
@@ -10443,11 +10443,11 @@ img {
     position: fixed;
     padding-top: .3125rem;
     padding-bottom: .3125rem;
-    color: #ffffff;
+    color: #000000;
     margin-left: 17px;
     margin-top: 3px;
     text-transform: uppercase;
-    font-size: 1rem; }
+    font-size: 1.6rem; }
   .navbar .navbar-toggle button:focus, .navbar .navbar-toggler {
     outline: none; }
 
@@ -10740,7 +10740,7 @@ p {
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 5px; }
   p.description {
-    font-size: 1.14em; }
+    font-size: 5.14em; }
 
 .title {
   font-weight: 600; }
@@ -10764,10 +10764,10 @@ p {
   text-transform: capitalize;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 0.75rem; }
+  font-size: 0.95rem; }
 
 .card-category {
-  font-size: 0.75rem; }
+  font-size: 0.95rem; }
 
 .blockquote {
   border-left: none;
@@ -10777,7 +10777,7 @@ p {
   line-height: 1.8; }
   .blockquote small {
     color: #344675;
-    font-size: 0.75rem;
+    font-size: 0.95rem;
     text-transform: uppercase; }
   .blockquote.blockquote-primary {
     border-color: #e14eca;
@@ -11421,7 +11421,7 @@ table.tablesorter thead tr .headerSortDown {
       position: relative;
       text-transform: uppercase;
       cursor: pointer;
-      font-size: 0.62475rem;
+      font-size: 1rem;
       padding: 10px 8px;
       line-height: 1.625rem; }
     .sidebar .nav li:first-child > a,
@@ -11434,12 +11434,12 @@ table.tablesorter thead tr .headerSortDown {
     .off-canvas-sidebar .nav li:hover:not(.active) > a i,
     .off-canvas-sidebar .nav li:focus:not(.active) > a p,
     .off-canvas-sidebar .nav li:focus:not(.active) > a i {
-      color: #ffffff; }
+      color: #000000; }
     .sidebar .nav li:hover:not(.active) > a i,
     .sidebar .nav li:focus:not(.active) > a i,
     .off-canvas-sidebar .nav li:hover:not(.active) > a i,
     .off-canvas-sidebar .nav li:focus:not(.active) > a i {
-      color: #ffffff; }
+      color: #000000; }
     .sidebar .nav li.active > a:not([data-toggle="collapse"]),
     .off-canvas-sidebar .nav li.active > a:not([data-toggle="collapse"]) {
       background: transparent; }
@@ -11503,7 +11503,7 @@ table.tablesorter thead tr .headerSortDown {
       white-space: nowrap; }
     .sidebar .nav i,
     .off-canvas-sidebar .nav i {
-      font-size: 20px;
+      font-size: 25px;
       float: left;
       margin-right: 12px;
       line-height: 30px;
@@ -13172,7 +13172,7 @@ Copyright (c) 2015 Daniel Eden
     border-radius: 50%;
     margin-bottom: 15px; }
   .card label {
-    font-size: 0.75rem;
+    font-size: 1rem;
     margin-bottom: 5px; }
   .card .card-footer {
     background-color: transparent;
@@ -13190,13 +13190,13 @@ Copyright (c) 2015 Daniel Eden
 
 @media (max-width: 767.98px) {
   .card.card-chart .card-header .btn-group-toggle .tim-icons {
-    font-size: .875rem;
+    font-size: 1.875rem;
     top: -1px; } }
 
 .card-chart {
   overflow: hidden; }
   .card-chart .card-header .card-title i {
-    font-size: 16px;
+    font-size: 26px;
     margin-right: 5px;
     margin-bottom: 3px; }
   .card-chart .card-header .card-category {

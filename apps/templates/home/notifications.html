@@ -1,6 +1,6 @@
 {% extends "layouts/base-rtl.html" %}
 
-{% block title %} Notifications {% endblock %} 
+{% block title %} Notifications {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -10,241 +10,224 @@
 
 <script>
   const handleKeyDownForSearchPannel = (e) => {
-      if (e.key === "Enter") {
-          const searchQuery = document.getElementById("searchInput").value;
-          const encodedQuery = encodeURIComponent(searchQuery);
-          const url = "/?query=" + encodedQuery; // Replace with your desired URL
-          window.location.href = url;
-      }
+    if (e.key === "Enter") {
+      const searchQuery = document.getElementById("searchInput").value;
+      const encodedQuery = encodeURIComponent(searchQuery);
+      const url = "/?query=" + encodedQuery; // Replace with your desired URL
+      window.location.href = url;
+    }
   };
 </script>
 
 
-  <div class="content">
-    <div>
-      <ul class="pagination">
-        
-        {% for p in pages %}
-          <li>
-            <div>
-              <a href={{ p.url }}>
-                <h5>
-                    {{ p.number }} <span style="display:inline-block; width: 3;"></span>
-                </h5>
-              </a>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
-      <div class="collapse navbar-collapse text-right" id="navbarSupportedContent" >
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/news/">مرتب سازی <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              بستر
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=instagram&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">اینستاگرام</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=twitter&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">توییتر</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=telgram_group&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">گروه های تلگرامی</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=telegram_channel&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">کانال های تلگرامی</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=news_agency&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">خبرگزاری ها</a> 
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              بازه زمانی
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=1d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1d</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=3d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">3d</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=7d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">7d</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=14d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">14d</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=1m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1m</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=2m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">2m</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=3m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">3m</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=6m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">6m</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering=1y&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1y</a> 
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              احساسات
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">خیلی خوب</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=positive&">خوب</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=mixed&">خنثی</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=negative&">بد</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=very negative&">خیلی بد</a> 
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              دسته بندی
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=ورزشی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">ورزشی</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=اقتصادی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">اقتصادی</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=پزشکی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">پزشکی</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=اجتماعی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">اجتماعی</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=سیاسی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">سیاسی</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=بین الملل&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">بین الملل</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=فرهنگی هنری&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">فرهنگی هنری</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=علمی فناوری&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">عملی فناوری</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              عملیات روانی
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=mali_tajhizat">مسائل مالی و تجهیزات</a>
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=nezami_aghidati">مسائل عقیدتی و نظامی</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=tahrik_eteraz">تحریک و اعتراض کارکنان</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=etemad_zodaei_modiriati">مسائل مدیریتی و اعتمادزدایی</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=tazad_ekhtelaf">تضاد ها و اختلاف ها</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=khodi">اقدام خودی</a> 
-              <a class="dropdown-item" href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=unknown">نامربوط</a> 
-            </div>
-          </li>
-          <li class="nav-item active">
-            <input type="text" class="form-control search-input" id="searchInput" placeholder="جست‌وجو" onkeydown="handleKeyDownForSearchPannel(event)">
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            {% for news in news_list1 %}
-              <div class="alert alert-success text-right">
-                <div><img class="avatar" src="{{ ASSETS_ROOT }}/img/default-avatar.png" alt="..."></div>
-                <div class="text-right"><span><b>متن خبر  </b><br> {{ news.clean_context }}</span></div>
-                <div class="text-right"><span><b> دسته بندی خبری  </b><br> {{ news.category }} </span></div>
-                <div class="text-right"><span><b>احساسات  </b><br>{{ news.sentiment }}</span></div>
-                <!-- <div class="text-right"><span><b>موجودیت ها  </b><br> {{ news.ner }}</span></div> -->
-                <div class="text-right"><span><b>دسته بندی عملیات روانی  </b><br> {{ news.manual_info_service_tag }} </span></div>
-                <div class="text-right"><span><b>تاریخ انتشار  </b><br>{{ news.jcreated_at }}</span></div>
-                <div class="text-right"><span><b>بستر </b><br>{{ news.platform }}</span></div>
-
-
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>  
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            {% for news in news_list2 %}
-            <div class="alert alert-success text-right">
-              <div><img class="avatar" src="{{ ASSETS_ROOT }}/img/default-avatar.png" alt="..."></div>
-              <div class="text-right"><span><b>متن خبر  </b><br> {{ news.clean_context }}</span></div>
-              <div class="text-right"><span><b> دسته بندی خبری  </b><br> {{ news.category }} </span></div>
-              <div class="text-right"><span><b>احساسات  </b><br>{{ news.sentiment }}</span></div>
-              <!-- <div class="text-right"><span><b>موجودیت ها  </b><br> {{ news.ner }}</span></div> -->
-              <div class="text-right"><span><b>دسته بندی عملیات روانی  </b><br> {{ news.manual_info_service_tag }} </span></div>
-              <div class="text-right"><span><b>تاریخ انتشار  </b><br>{{ news.jcreated_at }}</span></div>
-              <div class="text-right"><span><b>بستر </b><br>{{ news.platform }}</span></div>
-
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-
+<div class="content">
+  <div>
     <ul class="pagination">
-      
+
       {% for p in pages %}
-        <li>
-          <div>
-            <a href={{ p.url }}>
-              <h5>
-                  {{ p.number }} <span style="display:inline-block; width: 3;"></span>
-              </h5>
-            </a>
-          </div>
-        </li>
+      <li>
+        <div>
+          <a href={{ p.url }}>
+            <h5>
+              {{ p.number }} <span style="display:inline-block; width: 3;"></span>
+            </h5>
+          </a>
+        </div>
+      </li>
       {% endfor %}
     </ul>
-
   </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+    <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/news/">مرتب سازی <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            بستر
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=instagram&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">اینستاگرام</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=twitter&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">توییتر</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=telgram_group&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">گروه
+              های تلگرامی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=telegram_channel&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">کانال
+              های تلگرامی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform=news_agency&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">خبرگزاری
+              ها</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            بازه زمانی
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering=1d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1d</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering=3d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">3d</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering=7d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">7d</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering=14d&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">14d</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering=1m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1m</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering=2m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">2m</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering=3m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">3m</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering=6m&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">6m</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering=1y&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}">1y</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            احساسات
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=very positive&">خیلی
+              خوب</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=positive&">خوب</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=mixed&">خنثی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=negative&">بد</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category={{ category }}&inteligence_service_category={{ inteligence_service_category }}&sentiment=very negative&">خیلی
+              بد</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            دسته بندی
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=ورزشی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">ورزشی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=اقتصادی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">اقتصادی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=پزشکی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">پزشکی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=اجتماعی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">اجتماعی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=سیاسی&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">سیاسی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=بین الملل&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">بین
+              الملل</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=فرهنگی هنری&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">فرهنگی
+              هنری</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&category=علمی فناوری&inteligence_service_category={{ inteligence_service_category }}&sentiment={{ sentiment }}&">عملی
+              فناوری</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            عملیات روانی
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=mali_tajhizat">مسائل
+              مالی و تجهیزات</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=nezami_aghidati">مسائل
+              عقیدتی و نظامی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=tahrik_eteraz">تحریک
+              و اعتراض کارکنان</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=etemad_zodaei_modiriati">مسائل
+              مدیریتی و اعتمادزدایی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=tazad_ekhtelaf">تضاد
+              ها و اختلاف ها</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=khodi">اقدام
+              خودی</a>
+            <a class="dropdown-item"
+              href="/news/?page={{ page }}&time_filtering={{ time_filtering }}&platform={{ platform }}&sentiment={{ sentiment }}&category={{ category }}&inteligence_service_category=unknown">نامربوط</a>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <input type="text" class="form-control search-input" id="searchInput" placeholder="جست‌وجو"
+            onkeydown="handleKeyDownForSearchPannel(event)">
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row"><hr></div>
+
+  <div class="row">
+    <div class="col-md-6">
+      {% for news in news_list1 %}
+      <div class="card">
+        <div class="card-header text-right">
+          <div><img class="avatar" src="{{ ASSETS_ROOT }}/img/man.png" alt="..."></div>
+          <h6 class="title d-inline">{{ news.jcreated_at }} &nbsp &nbsp &nbsp {{ news.platform }} &nbsp &nbsp &nbsp {{ news.category }}</h6>
+          <h6 class="title d-inline"><br>احساسات {{ news.sentiment }} &nbsp &nbsp &nbsp عملیات روانی {{ news.manual_info_service_tag }}</h6>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-light text-right">
+            <div class="text-right h4"><span>{{ news.clean_context }}</span></div>            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-md-6">
+      {% for news in news_list2 %}
+      <div class="card">
+        <div class="card-header text-right">
+          <div><img class="avatar" src="{{ ASSETS_ROOT }}/img/man.png" alt="..."></div>
+          <h6 class="title d-inline">{{ news.jcreated_at }} &nbsp &nbsp &nbsp {{ news.platform }} &nbsp &nbsp &nbsp {{ news.category }}</h6>
+          <h6 class="title d-inline"><br>احساسات {{ news.sentiment }} &nbsp &nbsp &nbsp عملیات روانی {{ news.manual_info_service_tag }}</h6>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-light text-right">
+            <div class="text-right h4"><span>{{ news.clean_context }}</span></div>            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <ul class="pagination">
+
+    {% for p in pages %}
+    <li>
+      <div>
+        <a href={{ p.url }}>
+          <h5>
+            {{ p.number }} <span style="display:inline-block; width: 3;"></span>
+          </h5>
+        </a>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>
 
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}{% endblock javascripts %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
