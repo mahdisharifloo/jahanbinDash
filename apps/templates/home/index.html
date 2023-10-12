@@ -14,43 +14,203 @@
 {% block content %}
 <!-- <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script> -->
 <div class="content">
-  <!-- <script src="{% static 'assets/demo/demo.js' %}"></script> -->
+
+<style>
+
+.scroll-cards {
+  counter-reset: card;
+  position: relative;
+  display: block;
+  padding-bottom: 60vh;
+}
+
+.scroll-cards > .scroll-cards__item + .scroll-cards__item {
+  margin-top: 20vh;
+}
+
+.scroll-cards h1 {
+  position: sticky;
+  top: 1rem;
+  font-size: 5em;
+  margin: 0 0 0.5em;
+}
+
+.scroll-cards__item {
+  --offset: 0.5em;
+  color: #000;
+  position: sticky;
+  top: max(16vh, 10em);
+  padding: 2em 1.5em;
+  min-height: 19em;
+  background: #fff;
+  box-shadow: 0 2px 40px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 5 * var(--offset));
+}
+
+/*
+If you use SASS you can shorten this one here like this:
+
+@for $i from 0 through 5 {
+  &:nth-of-type(#{$i}) {
+    transform: translate(calc((#{$i} - 1) * var(--offset)), calc((#{$i} - 1) * var(--offset)));
+  }
+}
+*/
+.scroll-cards__item:nth-of-type(0) {
+  transform: translate(calc((0 - 1) * var(--offset)), calc((0 - 1) * var(--offset)));
+}
+.scroll-cards__item:nth-of-type(1) {
+  transform: translate(calc((1 - 1) * var(--offset)), calc((1 - 1) * var(--offset)));
+}
+.scroll-cards__item:nth-of-type(2) {
+  transform: translate(calc((2 - 1) * var(--offset)), calc((2 - 1) * var(--offset)));
+}
+.scroll-cards__item:nth-of-type(3) {
+  transform: translate(calc((3 - 1) * var(--offset)), calc((3 - 1) * var(--offset)));
+}
+.scroll-cards__item:nth-of-type(4) {
+  transform: translate(calc((4 - 1) * var(--offset)), calc((4 - 1) * var(--offset)));
+}
+.scroll-cards__item:nth-of-type(5) {
+  transform: translate(calc((5 - 1) * var(--offset)), calc((5 - 1) * var(--offset)));
+}
+
+@media screen and (min-width: 37em) {
+  h1 {
+    font-size: 5em;
+  }
+  .scroll-cards__item {
+    --offset: 1em;
+    padding-left: 5em;
+  }
+  .scroll-cards__item:before {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75em;
+    height: 2.75em;
+    background: rgb(2, 64, 172);
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    left: 1.25em;
+    top: 1.25em;
+    font-weight: bold;
+  }
+}
+
+.social_avatar{ 
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 15px;
+    }
+
+
+@media screen and (min-width: 62em) {
+  .scroll-cards h1 {
+    font-size: 5em;
+  }
+  .scroll-cards__item {
+    --offset: 1.25em;
+    max-width: 42em;
+  }
+}
+
+
+</style>
 
   <div class="row">
-    <div class="col-12">
-      <div class="card-header text-right">
-        <p><b>به سامانه جهانبین خوش آمدید</b></p>
-        <div class="card-footer">
-          <a href="/instagram">
-              <p><b>اینستاگرام</b></p>
-          </a>
-          <a href="/twitter">
-              <p><b>توییتر</b></p>
-          </a>
-          <a href="/agency_news">
-              <p><b>خبرگزاری</b></p>
-          </a>
-          <a href="/telegram_group">
-              <p><b>گروه های تلگرامی</b></p>
-          </a>
-          <a href="/telegram_chanel">
-              <p><b>کانال های تلگرامی</b></p>
-          </a>
+    <div class="col-md-1"></div>
+
+    <div class="col-md-3  text-right">
+      <div class="wrapper  text-right">
+        <div class="scroll-cards  text-right">
+          <img class="social_avatar" src="{{ ASSETS_ROOT }}/img/twitter.png" alt="...">
+          <article class="scroll-cards__item" aria-label="Wie - 1"> 
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>  
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3  text-right">
+      <div class="wrapper  text-right">
+        <img class="social_avatar" src="{{ ASSETS_ROOT }}/img/instagram.png" alt="...">
+        <div class="scroll-cards  text-right">
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>  
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3  text-right">
+      <div class="wrapper  text-right">
+        <img class="social_avatar" src="{{ ASSETS_ROOT }}/img/telegram.png" alt="...">
+        <div class="scroll-cards  text-right">
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>
+          <article class="scroll-cards__item" aria-label="Wie - 1">
+            <h2>عنوان</h2>
+            <p>این یک متن آزمایشی از اخبار جهان است که مورد بررسی و تحلیل قرار میگرد. در این سامانه همه تلاش ما این است تا به روز ترین اخبار ارتش در اختیار شما قرار بگیرد</p>
+          </article>  
         </div>
       </div>
     </div>
   </div>
 </div>
 {% endblock content %}
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
-
-<script>
-    $(document).ready(function () {
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-
-    });
-</script>
-
-{% endblock javascripts %}
